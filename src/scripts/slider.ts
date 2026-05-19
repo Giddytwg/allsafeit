@@ -51,13 +51,4 @@ export function initSliders(): void {
     }
   });
 
-  // Conditionally load Finsweet for CMS testimonials slider
-  const testimonialEl = document.getElementById('testimonial');
-  if (testimonialEl) {
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = 'https://cdn.jsdelivr.net/npm/@finsweet/attributes@2/attributes.js';
-    script.async = true;
-    document.body.appendChild(script);
-  }
 }

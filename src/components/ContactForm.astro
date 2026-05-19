@@ -143,13 +143,26 @@ const services = [
   </div>
 </div>
 
-<!-- reCAPTCHA script loaded only on pages that include this form -->
-<script
-  src="https://www.google.com/recaptcha/api.js"
-  async
-  defer
-  is:inline
-></script>
+<!-- reCAPTCHA loaded lazily — only when the form enters the viewport -->
+<script>
+  const recaptchaTarget = document.querySelector('.g-recaptcha');
+  if (recaptchaTarget) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          const script = document.createElement('script');
+          script.src = 'https://www.google.com/recaptcha/api.js';
+          script.async = true;
+          script.defer = true;
+          document.head.appendChild(script);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(recaptchaTarget);
+  }
+</script>
 
 <script>
   // Populate hidden source_url field with current page URL

@@ -10,14 +10,9 @@ const { question, open = false } = Astro.props;
 <details class="accordion-item" {...(open ? { open: true } : {})}>
   <summary class="accordion-title">
     <h3 class="accordion-heading">{question}</h3>
-    <img
-      alt=""
-      src="/images/icon-interface-arrow-up.svg"
-      class="accordion-arrow"
-      width="16"
-      height="16"
-      aria-hidden="true"
-    />
+    <svg class="accordion-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M9 14.25L9 4.5M3.75 9L9 3.75L14.25 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+    </svg>
   </summary>
   <div class="accordion-content-wrap">
     <div class="accordion-content">
@@ -68,6 +63,7 @@ const { question, open = false } = Astro.props;
   .accordion-arrow {
     display: block;
     flex-shrink: 0;
+    color: var(--color-brand-dark);
     /* Arrow SVG points UP; rotate 180° = pointing DOWN = closed state */
     transform: rotate(180deg);
     transition: transform 0.2s ease;

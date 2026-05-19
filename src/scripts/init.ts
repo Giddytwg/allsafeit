@@ -1,8 +1,10 @@
 // Central script initializer — imported once by Base.astro.
-// Add new module calls here. Conditional imports keep bundles small.
+// Slider is only loaded on pages that actually contain a slider widget.
 
 import { initNav } from './nav';
-import { initSliders } from './slider';
 
 initNav();
-initSliders();
+
+if (document.querySelector('[data-slider]')) {
+  import('./slider').then(({ initSliders }) => initSliders());
+}

@@ -1,10 +1,20 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import Navbar from '../components/Navbar.astro';
 import AccordionItem from '../components/AccordionItem.astro';
 import ContactForm from '../components/ContactForm.astro';
 
+import heroImg from '../assets/images/Hero-image-optiized.avif';
+import avatarNathan from '../assets/images/NathanPhinney-optimized.avif';
+import avatarKevin from '../assets/images/Kevin-Hughes-optimized.avif';
+import photoWhisk from '../assets/images/Whisk_ccb50cadff38ba0a4e94c479a58da933dr.avif';
+import photoEmployee from '../assets/images/allsafe-employee-1.avif';
+import photoCeo from '../assets/images/DSC_1897DSC_1896.avif';
+import photoItPro from '../assets/images/DSC_2042DSC_2041.avif';
+import photoTeam from '../assets/images/6939794b98a8d163dbb5dd90_expertguidance-1.avif';
+
 const arrowRightSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor" aria-hidden="true"><path d="M566.6 342.6C579.1 330.1 579.1 309.8 566.6 297.3L406.6 137.3C394.1 124.8 373.8 124.8 361.3 137.3C348.8 149.8 348.8 170.1 361.3 182.6L466.7 288L96 288C78.3 288 64 302.3 64 320C64 337.7 78.3 352 96 352L466.7 352L361.3 457.4C348.8 469.9 348.8 490.2 361.3 502.7C373.8 515.2 394.1 515.2 406.6 502.7L566.6 342.7z"/></svg>`;
+const sliderArrowSvg = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3.75 9H13.5M9 3.75L14.25 9L9 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>`;
 
 const checkCircleSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor" aria-hidden="true"><path d="M320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576zM438 209.7C427.3 201.9 412.3 204.3 404.5 215L285.1 379.2L233 327.1C223.6 317.7 208.4 317.7 199.1 327.1C189.8 336.5 189.7 351.7 199.1 361L271.1 433C276.1 438 282.9 440.5 289.9 440C296.9 439.5 303.3 435.9 307.4 430.2L443.3 243.2C451.1 232.5 448.7 217.5 438 209.7z"/></svg>`;
 
@@ -136,7 +146,7 @@ const orgSchema = {
        1. HERO SECTION
        ═══════════════════════════════════════════════════════════ -->
   <section class="hero-wrap">
-    <Navbar variant="transparent" />
+    <div aria-hidden="true" style="height: var(--navbar-height)"></div>
     <div class="container inside-hero">
       <div class="hero-1-contents">
         <div class="hero-grid home">
@@ -155,8 +165,8 @@ const orgSchema = {
             <a href="/contact-us" class="contact-link-cta">
               <div class="avatar-text">
                 <div class="avatar-group">
-                  <img src="/images/NathanPhinney-optimized.avif" alt="Nathan Phinney" class="avatar inside-group" width="54" height="54" loading="eager" />
-                  <img src="/images/Kevin-Hughes-optimized.avif" alt="Kevin Hughes" class="avatar inside-group" width="54" height="54" loading="eager" />
+                  <Image src={avatarNathan} alt="Nathan Phinney" class="avatar inside-group" width={54} height={54} loading="eager" />
+                  <Image src={avatarKevin} alt="Kevin Hughes" class="avatar inside-group" width={54} height={54} loading="eager" />
                 </div>
                 <span class="badge-text-white">[Talk to an Expert]</span>
               </div>
@@ -171,12 +181,12 @@ const orgSchema = {
           <!-- Right: hero image -->
           <div class="hero-image-wrapper">
             <div class="blur-overlay"></div>
-            <img
+            <Image
               class="hero-image"
-              src="/images/Hero-image-optiized.avif"
+              src={heroImg}
               alt="Small business owner smiling in Los Angeles café — AllSafe IT managed IT services client"
-              width="800"
-              height="800"
+              widths={[400, 700, 800]}
+              sizes="(max-width: 991px) 90vw, 50vw"
               loading="eager"
               fetchpriority="high"
             />
@@ -432,12 +442,12 @@ const orgSchema = {
         </div>
 
         <div class="square-image-wrap sticky">
-          <img
+          <Image
             class="square-parallax-image"
-            src="/images/Whisk_ccb50cadff38ba0a4e94c479a58da933dr.avif"
+            src={photoWhisk}
             alt="Trained tech member offering IT support in California"
-            width="500"
-            height="500"
+            widths={[300, 500]}
+            sizes="(max-width: 991px) 90vw, 500px"
             loading="lazy"
           />
         </div>
@@ -466,12 +476,12 @@ const orgSchema = {
             </div>
           </div>
           <div class="square-image-wrap sticky">
-            <img
+            <Image
               class="square-parallax-image reversed"
-              src="/images/allsafe-employee-1.avif"
+              src={photoEmployee}
               alt="Team lead for Managed Services in California office"
-              width="500"
-              height="500"
+              widths={[300, 500]}
+              sizes="(max-width: 991px) 90vw, 500px"
               loading="lazy"
             />
           </div>
@@ -488,12 +498,12 @@ const orgSchema = {
       <div class="section-content">
         <div class="grid">
           <div class="square-image-wrap sticky">
-            <img
+            <Image
               class="square-parallax-image"
-              src="/images/DSC_1897DSC_1896.avif"
+              src={photoCeo}
               alt="CEO of AllSafe IT, California's Managed Services Provider"
-              width="500"
-              height="500"
+              widths={[300, 500]}
+              sizes="(max-width: 991px) 90vw, 500px"
               loading="lazy"
             />
           </div>
@@ -578,12 +588,12 @@ const orgSchema = {
 
           <button data-slider-prev class="circle-button slider-prev" aria-label="Previous testimonial">
             <div class="circle-button-icon-wrapper prev">
-              <img src="/images/icon-interface-arrow-right.svg" alt="" class="circle-button-icon" width="18" height="18" loading="lazy" />
+              <span class="circle-button-icon" set:html={sliderArrowSvg} />
             </div>
           </button>
           <button data-slider-next class="circle-button slider-next" aria-label="Next testimonial">
             <div class="circle-button-icon-wrapper">
-              <img src="/images/icon-interface-arrow-right.svg" alt="" class="circle-button-icon" width="18" height="18" loading="lazy" />
+              <span class="circle-button-icon" set:html={sliderArrowSvg} />
             </div>
           </button>
         </div>
@@ -640,13 +650,13 @@ const orgSchema = {
           </div>
         </div>
         <div class="square-image-wrap">
-          <img
-            src="/images/6939794b98a8d163dbb5dd90_expertguidance-1.avif"
+          <Image
+            src={photoTeam}
             loading="lazy"
             alt="Managed IT professionals of AllSafe IT at our SoCal headquarters"
             class="square-parallax-image"
-            width="500"
-            height="500"
+            widths={[300, 500]}
+            sizes="(max-width: 991px) 90vw, 500px"
           />
         </div>
       </div>
@@ -761,12 +771,12 @@ const orgSchema = {
           </div>
 
           <div class="square-image-wrap sticky">
-            <img
+            <Image
               class="square-parallax-image"
-              src="/images/DSC_2042DSC_2041.avif"
+              src={photoItPro}
               alt="IT professional offering expert IT support to businesses in Southern California"
-              width="500"
-              height="500"
+              widths={[300, 500]}
+              sizes="(max-width: 991px) 90vw, 500px"
               loading="lazy"
             />
           </div>
