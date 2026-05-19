@@ -1,0 +1,581 @@
+---
+// Requires Phase 3 asset copy to be run before `astro dev`.
+// Logos must exist at src/assets/logos/ before this component builds.
+import { Image } from 'astro:assets';
+import logoColored from '../assets/logos/logo.avif';
+import logoWhite from '../assets/logos/allsafeit-white.svg';
+
+interface Props {
+  variant?: 'light' | 'transparent';
+}
+
+const { variant = 'light' } = Astro.props;
+const isTransparent = variant === 'transparent';
+const path = Astro.url.pathname;
+
+const arrowSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="12" height="12" aria-hidden="true" focusable="false"><path d="M31.5 192h257c28.4 0 42.8 34.5 22.6 54.6l-128.5 128c-12.5 12.5-32.8 12.5-45.3 0l-128.5-128C-11.3 226.5 3.1 192 31.5 192z" fill="currentColor"/></svg>`;
+---
+
+<div
+  class:list={['navbar', { 'navbar--transparent': isTransparent }]}
+  role="banner"
+>
+  <div class="nav-container">
+    <div class="nav-contents">
+
+      <!-- Logo -->
+      <div class="nav-left">
+        <a href="/" class="nav-logo-link" aria-label="AllSafe IT — home">
+          {isTransparent
+            ? <img src={logoWhite.src} alt="AllSafe IT logo" class="nav-logo" width="183" height="56" loading="eager" decoding="async" />
+            : <Image src={logoColored} alt="AllSafe IT logo" class="nav-logo" width="183" height="56" loading="eager" decoding="async" />
+          }
+        </a>
+      </div>
+
+      <!-- Desktop nav links (hidden on mobile via CSS) -->
+      <nav aria-label="Main navigation" class="nav-menu-desktop">
+        <ul class="nav-links" role="list">
+
+          <!-- IT Services dropdown -->
+          <li class="dropdown" data-dropdown>
+            <button class="dropdown-toggle nav-link" data-dropdown-trigger aria-expanded="false" aria-haspopup="true">
+              IT Services
+              <span class="dropdown-arrow" set:html={arrowSvg} />
+            </button>
+            <div class="dropdown-list" data-dropdown-menu>
+              <div class="dropdown-content-wrapper">
+                <div class="dropdown-content widget__biggerwidth">
+                  <div class="dropdown-column">
+                    <a href="/services/managed-it" class="dropdown-link toplinks">Managed IT</a>
+                  </div>
+                  <div class="dropdown-column">
+                    <a href="/services/cybersecurity" class="dropdown-link toplinks">Cybersecurity</a>
+                  </div>
+                  <div class="dropdown-column">
+                    <a href="/services/it-consulting" class="dropdown-link toplinks">IT Consulting</a>
+                  </div>
+                  <div class="dropdown-column">
+                    <a href="/services/it-infrastructure-and-cloud" class="dropdown-link toplinks">Infrastructure &amp; Cloud</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Our Story dropdown -->
+          <li class="dropdown" data-dropdown>
+            <button class="dropdown-toggle nav-link" data-dropdown-trigger aria-expanded="false" aria-haspopup="true">
+              Our Story
+              <span class="dropdown-arrow" set:html={arrowSvg} />
+            </button>
+            <div class="dropdown-list" data-dropdown-menu>
+              <div class="dropdown-content-wrapper">
+                <div class="dropdown-content smaller">
+                  <div class="dropdown-column">
+                    <a href="/about-us" class="dropdown-link">About Us</a>
+                    <a href="/why-choose-us" class="dropdown-link">Why Us</a>
+                    <a href="/testimonials" class="dropdown-link">Testimonials</a>
+                    <a href="/careers" class="dropdown-link">Careers</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Locations dropdown -->
+          <li class="dropdown" data-dropdown>
+            <button class="dropdown-toggle nav-link" data-dropdown-trigger aria-expanded="false" aria-haspopup="true">
+              Locations
+              <span class="dropdown-arrow" set:html={arrowSvg} />
+            </button>
+            <div class="dropdown-list" data-dropdown-menu>
+              <div class="dropdown-content-wrapper">
+                <div class="dropdown-content smaller">
+                  <div class="dropdown-column">
+                    <a href="/locations/managed-it-services-pasadena" class="dropdown-link">Pasadena</a>
+                    <a href="/locations/managed-it-services-los-angeles" class="dropdown-link">Los Angeles</a>
+                    <a href="/locations/managed-it-services-orange-county" class="dropdown-link">Orange County</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Blog — direct link -->
+          <li>
+            <a href="/blog" class="nav-link" aria-current={path === '/blog' ? 'page' : undefined}>Blog</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <!-- Right: CTA + hamburger -->
+      <div class="nav-right">
+        <a href="/contact-us" class="nav-cta-btn">Contact Us</a>
+        <button
+          class="menu-button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open navigation menu"
+        >
+          <span class="menu-icon menu-icon--open" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </span>
+          <span class="menu-icon menu-icon--close" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+          </span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile nav drawer — separate from nav-left, fills full height -->
+  <nav
+    id="mobile-nav"
+    aria-label="Mobile navigation"
+    data-nav-menu
+    class="mobile-nav"
+    hidden
+  >
+    <ul class="mobile-nav-list" role="list">
+
+      <!-- IT Services accordion -->
+      <li class="mobile-nav-item" data-dropdown>
+        <button class="mobile-nav-trigger" data-dropdown-trigger aria-expanded="false" aria-haspopup="true">
+          IT Services
+          <span class="dropdown-arrow" set:html={arrowSvg} />
+        </button>
+        <ul class="mobile-dropdown" role="list">
+          <li><a href="/services/managed-it" class="mobile-nav-link">Managed IT</a></li>
+          <li><a href="/services/cybersecurity" class="mobile-nav-link">Cybersecurity</a></li>
+          <li><a href="/services/it-consulting" class="mobile-nav-link">IT Consulting</a></li>
+          <li><a href="/services/it-infrastructure-and-cloud" class="mobile-nav-link">Infrastructure &amp; Cloud</a></li>
+        </ul>
+      </li>
+
+      <!-- Our Story accordion -->
+      <li class="mobile-nav-item" data-dropdown>
+        <button class="mobile-nav-trigger" data-dropdown-trigger aria-expanded="false" aria-haspopup="true">
+          Our Story
+          <span class="dropdown-arrow" set:html={arrowSvg} />
+        </button>
+        <ul class="mobile-dropdown" role="list">
+          <li><a href="/about-us" class="mobile-nav-link">About Us</a></li>
+          <li><a href="/why-choose-us" class="mobile-nav-link">Why Us</a></li>
+          <li><a href="/testimonials" class="mobile-nav-link">Testimonials</a></li>
+          <li><a href="/careers" class="mobile-nav-link">Careers</a></li>
+        </ul>
+      </li>
+
+      <!-- Locations accordion -->
+      <li class="mobile-nav-item" data-dropdown>
+        <button class="mobile-nav-trigger" data-dropdown-trigger aria-expanded="false" aria-haspopup="true">
+          Locations
+          <span class="dropdown-arrow" set:html={arrowSvg} />
+        </button>
+        <ul class="mobile-dropdown" role="list">
+          <li><a href="/locations/managed-it-services-pasadena" class="mobile-nav-link">Pasadena</a></li>
+          <li><a href="/locations/managed-it-services-los-angeles" class="mobile-nav-link">Los Angeles</a></li>
+          <li><a href="/locations/managed-it-services-orange-county" class="mobile-nav-link">Orange County</a></li>
+        </ul>
+      </li>
+
+      <!-- Blog direct link -->
+      <li class="mobile-nav-item">
+        <a href="/blog" class="mobile-nav-trigger" aria-current={path === '/blog' ? 'page' : undefined}>Blog</a>
+      </li>
+
+    </ul>
+
+    <!-- CTA at bottom of mobile drawer -->
+    <div class="mobile-nav-footer">
+      <a href="/contact-us" class="mobile-cta-btn">Contact Us</a>
+    </div>
+  </nav>
+</div>
+
+<style>
+  /* ── Layout ─────────────────────────────────────────────────── */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    height: var(--navbar-height);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: var(--color-navbar-bg);
+    border-bottom: 1px solid var(--color-dark-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .navbar--transparent {
+    position: relative;
+    background-color: transparent;
+    border-bottom-color: var(--color-light-1-faded);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .nav-container {
+    width: 100%;
+    max-width: var(--container-main);
+    padding-left: var(--container-gutter);
+    padding-right: var(--container-gutter);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav-contents {
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  /* ── Logo ───────────────────────────────────────────────────── */
+  .nav-logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-logo {
+    width: 140px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* ── Desktop nav ────────────────────────────────────────────── */
+  .nav-menu-desktop {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    color: var(--color-text-dark);
+    font-size: var(--text-body);
+    font-family: var(--font-body);
+    padding: 6px 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    border-radius: 6px;
+  }
+
+  .nav-link:hover { opacity: 0.6; }
+
+  .navbar--transparent .nav-link { color: var(--color-text-light); }
+
+  /* ── Dropdown arrow ─────────────────────────────────────────── */
+  .dropdown-arrow {
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s;
+  }
+
+  /* ── Desktop dropdown ───────────────────────────────────────── */
+  .dropdown { position: relative; }
+
+  .dropdown-list {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 999;
+  }
+
+  @media (min-width: 992px) {
+    .dropdown:hover > .dropdown-list,
+    .dropdown:focus-within > .dropdown-list {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown:hover > .dropdown-toggle .dropdown-arrow,
+    .dropdown:focus-within > .dropdown-toggle .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown-content-wrapper { position: relative; }
+
+  .dropdown-content {
+    display: flex;
+    gap: 24px;
+    min-width: 220px;
+    padding: 18px;
+    background-color: var(--color-light-1);
+    border: 1px solid var(--color-dark-border);
+    border-radius: var(--radius-default);
+    box-shadow: 0 4px 36px #00000014;
+    white-space: nowrap;
+  }
+
+  .dropdown-content.widget__biggerwidth {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    min-width: 480px;
+  }
+
+  .dropdown-content.smaller { min-width: 160px; }
+
+  .dropdown-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 6px;
+  }
+
+  .dropdown-link {
+    color: var(--color-brand-dark);
+    font-size: var(--text-body);
+    transition: opacity 0.2s;
+    text-decoration: none;
+  }
+
+  .dropdown-link.toplinks {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .dropdown-link:hover {
+    opacity: 0.5;
+    text-decoration: underline;
+  }
+
+  /* ── Right side ─────────────────────────────────────────────── */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── Desktop CTA ────────────────────────────────────────────── */
+  .nav-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--btn-height-sm);
+    padding: 0 var(--btn-px-sm);
+    border-radius: var(--radius-default);
+    background-color: var(--color-brand-primary);
+    color: var(--color-text-light);
+    font-family: var(--font-badges);
+    font-size: var(--text-small);
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+
+  .nav-cta-btn:hover { opacity: 0.85; }
+
+  /* ── Hamburger ──────────────────────────────────────────────── */
+  .menu-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--color-brand-dark);
+    border-radius: 6px;
+    transition: background-color 0.15s;
+  }
+
+  .menu-button:hover { background-color: var(--color-dark-border); }
+
+  .navbar--transparent .menu-button { color: var(--color-text-light); }
+
+  .menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  .menu-icon--close { display: none; }
+
+  /* ── Mobile nav drawer ──────────────────────────────────────── */
+  .mobile-nav {
+    display: none; /* overridden when open */
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    right: 0;
+    /* Explicit height — critical: bottom:0 alone can fail in some environments */
+    height: calc(100dvh - var(--navbar-height));
+    /* Fallback for browsers without dvh */
+    height: calc(100vh - var(--navbar-height));
+    height: calc(100dvh - var(--navbar-height));
+    background-color: var(--color-light-1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 998;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    padding: 0;
+  }
+
+  /* JS sets display:flex when open via data-open */
+  .mobile-nav[data-open="true"] {
+    transform: translateX(0);
+  }
+
+  /* ── Mobile nav list ────────────────────────────────────────── */
+  .mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+  }
+
+  .mobile-nav-item {
+    border-bottom: 1px solid var(--color-dark-border);
+  }
+
+  .mobile-nav-item:first-child {
+    border-top: 1px solid var(--color-dark-border);
+  }
+
+  /* ── Mobile trigger (top-level items) ──────────────────────── */
+  .mobile-nav-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px var(--container-gutter);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--text-lead);
+    font-weight: 500;
+    color: var(--color-brand-dark);
+    text-decoration: none;
+    text-align: left;
+    transition: background-color 0.15s;
+  }
+
+  .mobile-nav-trigger:hover {
+    background-color: var(--color-light-2);
+  }
+
+  /* Arrow rotates when dropdown open */
+  [data-dropdown][data-open="true"] > .mobile-nav-trigger .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* ── Mobile sub-links ───────────────────────────────────────── */
+  .mobile-dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-light-2);
+    display: none;
+    border-top: 1px solid var(--color-dark-border);
+  }
+
+  [data-dropdown][data-open="true"] > .mobile-dropdown {
+    display: block;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 14px var(--container-gutter) 14px calc(var(--container-gutter) + 16px);
+    font-size: var(--text-body);
+    color: var(--color-brand-dark);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-dark-border);
+    transition: background-color 0.15s;
+  }
+
+  .mobile-nav-link:last-child { border-bottom: none; }
+  .mobile-nav-link:hover { background-color: var(--color-light-1); color: var(--color-accent); }
+
+  /* ── Mobile CTA ─────────────────────────────────────────────── */
+  .mobile-nav-footer {
+    padding: 24px var(--container-gutter);
+    border-top: 1px solid var(--color-dark-border);
+    background-color: var(--color-light-1);
+  }
+
+  .mobile-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: var(--radius-default);
+    background-color: var(--color-brand-primary);
+    color: var(--color-text-light);
+    font-family: var(--font-badges);
+    font-size: var(--text-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: opacity 0.15s;
+  }
+
+  .mobile-cta-btn:hover { opacity: 0.85; }
+
+  /* ── Responsive: tablet breakpoint ─────────────────────────── */
+  @media (max-width: 991px) {
+    /* On mobile, hide desktop nav and show hamburger */
+    .nav-menu-desktop { display: none; }
+    .nav-cta-btn       { display: none; }
+    .menu-button       { display: flex; }
+
+    /* Hide the transparent hero nav entirely on mobile */
+    .navbar--transparent { display: none; }
+  }
+
+  /* ── Close-icon swap ────────────────────────────────────────── */
+  :global(body[data-nav-open]) .menu-icon--open  { display: none; }
+  :global(body[data-nav-open]) .menu-icon--close { display: flex; }
+
+  /* ── Reduced motion ─────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-nav,
+    .dropdown-list,
+    .dropdown-arrow,
+    .mobile-nav-trigger .dropdown-arrow { transition: none; }
+  }
+</style>

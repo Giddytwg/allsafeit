@@ -1,0 +1,394 @@
+---
+// Year computed at build time (static site). Redeploy annually or add a
+// client-side script if runtime year is required.
+const year = new Date().getFullYear();
+
+const phoneSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M224.2 89C216.3 70.1 195.7 60.1 176.1 65.4L170.6 66.9C106 84.5 50.8 147.1 66.9 223.3C104 398.3 241.7 536 416.7 573.1C493 589.3 555.5 534 573.1 469.4L574.6 463.9C580 444.2 569.9 423.6 551.1 415.8L453.8 375.3C437.3 368.4 418.2 373.2 406.8 387.1L368.2 434.3C297.9 399.4 241.3 341 208.8 269.3L253 233.3C266.9 222 271.6 202.9 264.8 186.3L224.2 89z"/></svg>`;
+const pinSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z"/></svg>`;
+---
+
+<footer class="footer">
+  <div class="noise-bg" aria-hidden="true"></div>
+  <div class="line-wrapper bottom-left-lines" aria-hidden="true">
+    <div class="lines short"></div>
+    <div class="lines narrow"></div>
+  </div>
+  <div class="line-wrapper top-right-lines" aria-hidden="true">
+    <div class="lines short"></div>
+    <div class="lines narrow"></div>
+  </div>
+
+  <div class="container">
+    <div class="footer-wrap">
+
+      <!-- Top: brand info + nav menus -->
+      <div class="footer-top">
+        <div class="footer-info">
+          <a href="/" aria-label="AllSafe IT — home">
+            <div class="footer__logo">
+              <img
+                src="/logos/allsafeit-white.svg"
+                alt="AllSafe IT official logo"
+                class="footer-logo"
+                width="140"
+                height="43"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </a>
+          <p class="lead-text color__white-shade1">
+            We&rsquo;re an IT company serving Los Angeles and Orange County. Small enough to know your
+            name. Big enough to have your back. SOC2 compliant and obsessively process-driven, because
+            tech should support you, not the other way around.
+          </p>
+          <a href="/contact-us" class="button small">talk to an expert</a>
+        </div>
+
+        <nav class="footer-menus" aria-label="Footer navigation">
+          <!-- Main pages -->
+          <div class="footer-menu-wrap">
+            <div class="footer-menu">
+              <div class="footer-head color__white-shade1">[Main pages]</div>
+              <a href="/" class="footer-link">Home</a>
+              <a href="/services/it-infrastructure-and-cloud" class="footer-link">Infrastructure &amp; Cloud</a>
+              <a href="/services/managed-it" class="footer-link">Managed IT</a>
+              <a href="/services/it-consulting" class="footer-link">IT Consulting</a>
+              <a href="/services/cybersecurity" class="footer-link">Cybersecurity</a>
+              <a href="/industries" class="footer-link">Industries</a>
+              <a href="/areas-we-serve" class="footer-link">Areas We Serve</a>
+            </div>
+          </div>
+
+          <!-- Our story -->
+          <div class="footer-menu-wrap">
+            <div class="footer-menu">
+              <div class="footer-head color__white-shade1">[our story]</div>
+              <a href="/about-us" class="footer-link">About Us</a>
+              <a href="/why-choose-us" class="footer-link">Why Choose Us</a>
+              <a href="/support" class="footer-link">Remote Support</a>
+              <a href="/testimonials" class="footer-link">Testimonials</a>
+              <a href="/careers" class="footer-link">Careers</a>
+              <a href="/blog" class="footer-link">Blog</a>
+              <a href="/contact-us" class="footer-link">Contact</a>
+            </div>
+          </div>
+
+          <!-- Locations + contact -->
+          <div class="footer-menu-wrap">
+            <div class="footer-menu">
+              <div class="footer-head color__white-shade1">[Locations]</div>
+              <a href="/locations/managed-it-services-pasadena" class="footer-link">Pasadena</a>
+              <a href="/locations/managed-it-services-los-angeles" class="footer-link">Los Angeles</a>
+              <a href="/locations/managed-it-services-orange-county" class="footer-link">Orange County</a>
+            </div>
+            <div class="footer-menu">
+              <div class="footer-head color__white-shade1">[Contact us]</div>
+              <a href="tel:+18884002748" class="footer-link flex">
+                <span class="footer-icon" set:html={phoneSvg} />
+                <span>Sales<br />(888) 400-2748<br />option 1</span>
+              </a>
+              <a href="tel:+12137841959" class="footer-link flex">
+                <span class="footer-icon" set:html={phoneSvg} />
+                <span>Support<br />(213) 784-1959</span>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Office locations -->
+      <div class="footer-contact">
+        <div class="footer-head color__white-shade1 text-center">[our locations]</div>
+        <div class="footer-menu flex">
+          <address class="footer-link flex">
+            <span class="footer-icon" set:html={pinSvg} />
+            <span>Pasadena:<br />70 South Lake Ave, Suite 690<br />Pasadena, CA 91101</span>
+          </address>
+          <address class="footer-link flex">
+            <span class="footer-icon" set:html={pinSvg} />
+            <span>Los Angeles:<br />1800 North Vine St<br />Los Angeles, CA 90028</span>
+          </address>
+          <address class="footer-link flex">
+            <span class="footer-icon" set:html={pinSvg} />
+            <span>Orange County:<br />4695 MacArthur Court<br />Newport Beach, CA 92660</span>
+          </address>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <div class="copyright-wrap">
+          <p class="small-text copyright-text">&copy; Copyright {year} AllSafe IT</p>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/allsafeit/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="AllSafe IT on Instagram">
+            <img src="/icons/icon-social-instagram.svg" alt="" width="18" height="18" loading="lazy" decoding="async" class="social-link-icon" />
+          </a>
+          <a href="https://www.linkedin.com/company/allsafe-it" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="AllSafe IT on LinkedIn">
+            <img src="/icons/icon-social-linkedin.svg" alt="" width="18" height="18" loading="lazy" decoding="async" class="social-link-icon" />
+          </a>
+          <a href="https://x.com/allsafeit" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="AllSafe IT on X">
+            <img src="/icons/icon-social-x.svg" alt="" width="18" height="18" loading="lazy" decoding="async" class="social-link-icon" />
+          </a>
+          <a href="https://www.youtube.com/@AllSafeIT" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="AllSafe IT on YouTube">
+            <img src="/icons/icon-social-youtube.svg" alt="" width="18" height="18" loading="lazy" decoding="async" class="social-link-icon" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <p class="small-text footer-disclaimer">
+        Our proactive IT support approach ensures your business is equipped to face any IT challenge.
+        Partner with us today for worry-free tech.
+      </p>
+
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    background-color: var(--color-brand-dark);
+    color: var(--color-text-light);
+    padding-top: 96px;
+    padding-bottom: 72px;
+    overflow: hidden;
+  }
+
+  /* Noise texture overlay */
+  .noise-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url('/images/Noise.avif');
+    background-size: auto;
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  /* Decorative line strips */
+  .line-wrapper {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .bottom-left-lines { bottom: 0; left: 0; }
+  .top-right-lines { top: 0; right: 0; }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-main);
+    padding-left: var(--container-gutter);
+    padding-right: var(--container-gutter);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+  }
+
+  /* ── Top section ────────────────────────────────────────────── */
+  .footer-top {
+    display: flex;
+    gap: 48px;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: var(--container-4col);
+  }
+
+  .footer__logo {
+    max-width: 140px;
+  }
+
+  .footer-logo {
+    width: 140px;
+    height: 43px;
+    object-fit: contain;
+  }
+
+  /* ── Nav menus ──────────────────────────────────────────────── */
+  .footer-menus {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .footer-menu-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-head {
+    font-family: var(--font-badges);
+    font-size: var(--text-small);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+  }
+
+  .footer-link {
+    color: var(--color-text-light);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    transition: opacity 0.2s;
+    text-decoration: none;
+  }
+
+  .footer-link:hover {
+    opacity: 0.7;
+  }
+
+  .footer-link.flex,
+  address.footer-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-style: normal;
+  }
+
+  .footer-icon {
+    flex-shrink: 0;
+    margin-top: 3px;
+    opacity: 0.7;
+  }
+
+  /* ── Locations bar ──────────────────────────────────────────── */
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-top: 1px dotted var(--color-light-1-faded);
+    padding-top: 48px;
+  }
+
+  .footer-contact .footer-menu.flex {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  /* ── Bottom bar ─────────────────────────────────────────────── */
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dotted var(--color-light-1-faded);
+    padding-top: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .small-text {
+    font-size: var(--text-small);
+    line-height: var(--leading-small);
+    opacity: 0.6;
+  }
+
+  .copyright-text {
+    margin: 0;
+  }
+
+  .social-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .social-link:hover {
+    opacity: 1;
+  }
+
+  .footer-disclaimer {
+    margin: 0;
+    text-align: center;
+  }
+
+  /* ── Button (local) ─────────────────────────────────────────── */
+  .button.small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--btn-height-sm);
+    padding: 0 var(--btn-px-sm);
+    border-radius: var(--radius-default);
+    background-color: var(--color-brand-primary);
+    color: var(--color-text-light);
+    font-family: var(--font-badges);
+    font-size: var(--text-small);
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    align-self: flex-start;
+  }
+
+  /* ── color__white-shade1 utility ────────────────────────────── */
+  .color__white-shade1 {
+    color: var(--color-light-2);
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media (max-width: 991px) {
+    .footer-top {
+      flex-direction: column;
+    }
+
+    .footer-info {
+      max-width: 100%;
+    }
+
+    .footer-menus {
+      gap: 32px;
+    }
+
+    .footer-contact .footer-menu.flex {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .footer-menus {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
