@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import AccordionItem from '../components/AccordionItem.astro';
 import ContactForm from '../components/ContactForm.astro';
-
 import heroImg from '../assets/images/Hero-image-optiized.avif';
 import avatarNathan from '../assets/images/NathanPhinney-optimized.avif';
 import avatarKevin from '../assets/images/Kevin-Hughes-optimized.avif';
@@ -1212,7 +1211,7 @@ const orgSchema = {
   }
 
   .marquee {
-    width: auto;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -1277,6 +1276,7 @@ const orgSchema = {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    overflow: hidden;
   }
 
   .quote-box-slider-mask {
@@ -1335,9 +1335,9 @@ const orgSchema = {
 
   .slider-testimonial { display: none; }
 
-  @media (max-width: 767px) {
-    .quote-box-slider-mask { max-width: calc(100vw - 48px); }
-    .quote-box-slide       { min-width: calc(100vw - 48px); }
+  @media (max-width: 991px) {
+    .quote-box-slider-mask { max-width: 100%; }
+    .quote-box-slide       { min-width: 100%; }
   }
 
   /* ── Strategic section richtext ──────────────────────────────── */

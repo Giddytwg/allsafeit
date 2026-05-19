@@ -138,7 +138,6 @@ const arrowSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" 
     aria-label="Mobile navigation"
     data-nav-menu
     class="mobile-nav"
-    hidden
   >
     <ul class="mobile-nav-list" role="list">
 
@@ -432,30 +431,35 @@ const arrowSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" 
   .menu-icon--close { display: none; }
 
   /* ── Mobile nav drawer ──────────────────────────────────────── */
+  /* Hidden by default (desktop + closed mobile) */
   .mobile-nav {
-    display: none; /* overridden when open */
-    position: fixed;
-    top: var(--navbar-height);
-    left: 0;
-    right: 0;
-    /* Explicit height — critical: bottom:0 alone can fail in some environments */
-    height: calc(100dvh - var(--navbar-height));
-    /* Fallback for browsers without dvh */
-    height: calc(100vh - var(--navbar-height));
-    height: calc(100dvh - var(--navbar-height));
-    background-color: var(--color-light-1);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    z-index: 998;
-    flex-direction: column;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    padding: 0;
+    display: none;
   }
 
-  /* JS sets display:flex when open via data-open */
-  .mobile-nav[data-open="true"] {
-    transform: translateX(0);
+  @keyframes navSlideIn {
+    from { opacity: 0; transform: translateX(-24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Mobile: show as fixed full-height panel when open */
+  @media (max-width: 991px) {
+    .mobile-nav[data-open="true"] {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: var(--navbar-height);
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: calc(100vh - var(--navbar-height));
+      height: calc(100dvh - var(--navbar-height));
+      background-color: var(--color-light-1);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      z-index: 998;
+      padding: 0;
+      animation: navSlideIn 0.25s ease forwards;
+    }
   }
 
   /* ── Mobile nav list ────────────────────────────────────────── */
