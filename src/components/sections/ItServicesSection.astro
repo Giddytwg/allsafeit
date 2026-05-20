@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import photoCeo from '../../assets/images/DSC_1897DSC_1896.avif';
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section-content">
+      <div class="grid">
+        <div class="square-image-wrap sticky">
+          <Image
+            class="square-parallax-image"
+            src={photoCeo}
+            alt="CEO of AllSafe IT, California's Managed Services Provider"
+            widths={[300, 500]}
+            sizes="(max-width: 991px) 90vw, 500px"
+            loading="lazy"
+          />
+        </div>
+        <div class="content">
+          <h2 class="h3">We offer IT Services California businesses need</h2>
+          <p class="body-text">We understand the critical nature of timely support, which is why our team is committed to providing rapid, efficient managed IT solutions California companies rely on. Imagine having enterprise-level support that is there exactly when you need it, minimizing disruption and keeping your operations moving forward.<br /><br />We also provide the IT outsourcing California businesses deserve. With our IT support services, you gain access to strategic guidance and oversight that ensures your technology decisions are always aligned with where you want your business to go.</p>
+        </div>
+      </div>
+      <div class="metric-grid">
+        <div class="metric-box color__lightblue">
+          <div class="metric-box-top">
+            <p class="body-text metric-explainer">Round-the-clock remote IT support for all our clients.</p>
+          </div>
+          <div class="metric-text color__darkblue"><strong>24/7</strong></div>
+        </div>
+        <div class="metric-box color__lightblue">
+          <div class="metric-box-top">
+            <p class="body-text metric-explainer">Uptime for all network infrastructure</p>
+          </div>
+          <div class="metric-text color__darkblue"><strong>99.999%</strong></div>
+        </div>
+        <div class="metric-box color__lightblue">
+          <div class="metric-box-top">
+            <p class="body-text metric-explainer">Our Average CSAT</p>
+          </div>
+          <div class="metric-text color__darkblue"><strong>99.999%</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

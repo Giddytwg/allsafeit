@@ -1,0 +1,114 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroService from '../../components/sections/HeroService.astro';
+import SectionIntro from '../../components/sections/SectionIntro.astro';
+import SplitContent from '../../components/sections/SplitContent.astro';
+import ServiceCardList from '../../components/sections/ServiceCardList.astro';
+import TestimonialsSlider from '../../components/sections/TestimonialsSlider.astro';
+import TrustChecklist from '../../components/sections/TrustChecklist.astro';
+import LocationCards from '../../components/sections/LocationCards.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import ContactSection from '../../components/sections/ContactSection.astro';
+import { IT_INFRASTRUCTURE_FAQS } from '../../data/faqs/it-infrastructure';
+import type { ServiceItem } from '../../components/sections/ServiceCardList.astro';
+
+const coreServices: ServiceItem[] = [
+  {
+    title: 'Server Management',
+    description: 'Proactive monitoring, maintenance, and optimization of your physical and virtual servers. Maximum uptime, minimum surprises, and predictable performance.',
+  },
+  {
+    title: 'Network Infrastructure',
+    description: 'Design, deploy, and manage reliable networks. Redundancy built in, performance tuned, security hardened. Networks that support how your business actually works.',
+  },
+  {
+    title: 'Microsoft Azure Management',
+    description: 'Cloud infrastructure provisioned correctly, optimized for cost, and monitored continuously. We manage Azure so you get the benefits without the complexity.',
+  },
+  {
+    title: 'Microsoft 365 Administration',
+    description: 'User provisioning, license management, Teams configuration, and ongoing optimization of your M365 environment for maximum productivity.',
+  },
+  {
+    title: 'Cloud Cost Optimization',
+    description: 'Most businesses overspend on cloud by 30–40%. We find and eliminate waste while maintaining — and often improving — performance and reliability.',
+  },
+  {
+    title: 'Disaster Recovery & Business Continuity',
+    description: 'Tested recovery plans that get your business back online fast when the unexpected happens. Backup strategies that actually work under pressure.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'IT Infrastructure Management Services',
+  url: 'https://www.allsafeit.com/services/it-infrastructure-and-cloud',
+  serviceType: 'IT Infrastructure',
+  description: 'AllSafe IT delivers IT infrastructure management services and cloud management services that keep your systems reliable, your data secure, and your business growing.',
+  provider: { '@type': 'Organization', '@id': 'https://www.allsafeit.com#organization' },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.allsafeit.com' },
+    { '@type': 'ListItem', position: 2, name: 'IT Infrastructure & Cloud', item: 'https://www.allsafeit.com/services/it-infrastructure-and-cloud' },
+  ],
+};
+---
+
+<Base
+  title="IT Infrastructure Management Services | AllSafe IT"
+  description="IT infrastructure management and cloud management services that keep your systems reliable, data secure, and business growing. Microsoft Azure, M365, hybrid cloud. Free assessment."
+  canonical="https://www.allsafeit.com/services/it-infrastructure-and-cloud"
+  schema={[serviceSchema, breadcrumbSchema]}
+>
+  <HeroService
+    heading="IT Infrastructure Management Services"
+    lead="IT infrastructure management services and cloud management services that keep your systems reliable, your data secure, and your business growing without constant IT firefighting or expensive downtime."
+    image="/images/Cloudsolutions.avif"
+    imageAlt="IT infrastructure and cloud management services"
+  />
+
+  <SectionIntro heading="Infrastructure that supports your growth">
+    <p class="lead-text">Your IT infrastructure is the foundation everything else runs on. When it's poorly managed, every business function suffers — slow applications, unreliable connectivity, failed backups, and security gaps that keep you up at night.</p>
+    <p class="lead-text">Proactive infrastructure management eliminates the reactive firefighting that disrupts productivity. By monitoring performance continuously, we catch bottlenecks before they become outages, right-size cloud resources to cut waste, and ensure network reliability.</p>
+    <p class="lead-text">The result is technology that accelerates business rather than slowing it down.</p>
+  </SectionIntro>
+
+  <SplitContent
+    heading="Cloud management that pays for itself"
+    image="/images/Cloudsolutions.avif"
+    imageAlt="Cloud infrastructure management and cost optimization"
+    bg="gradient"
+  >
+    <p class="body-text">Most businesses overspend on cloud by 30–40% without proper governance. Unused resources, oversized instances, redundant services — the waste accumulates quickly and invisibly.</p>
+    <p class="body-text">Our cloud management approach combines continuous monitoring with rigorous cost governance. We right-size resources, eliminate waste, and optimize licensing — often reducing cloud spend significantly while improving performance.</p>
+    <p class="body-text">Microsoft Azure and Microsoft 365 are our primary platforms. We design, migrate, and manage hybrid environments that give you the control of on-premises where needed and the scalability of cloud where it makes sense.</p>
+  </SplitContent>
+
+  <SplitContent
+    heading="Hybrid infrastructure done right"
+    image="/images/managedIThollywood.avif"
+    imageAlt="Hybrid cloud and on-premises infrastructure management"
+    imageRight
+  >
+    <p class="body-text">Most businesses benefit from hybrid infrastructure — combining on-premises systems with cloud services. Pure cloud isn't always the answer, and neither is staying fully on-premises.</p>
+    <p class="body-text">We design hybrid environments that make practical sense for your business. Legacy systems that need on-prem control, cloud services for scalability and collaboration, and a managed network that ties it all together reliably.</p>
+    <p class="body-text">Hardware should be evaluated every 3–5 years. Cloud configurations reviewed quarterly. Security patches applied immediately. We build technology refresh roadmaps that avoid emergency replacements and align capital spending with your budget cycles.</p>
+  </SplitContent>
+
+  <ServiceCardList
+    heading="Core IT Infrastructure Services"
+    lead="Complete infrastructure management across servers, networks, cloud environments, and endpoints — everything required to keep your technology foundation reliable and scalable."
+    items={coreServices}
+  />
+
+  <TrustChecklist />
+  <TestimonialsSlider />
+  <LocationCards />
+  <FaqSection faqs={IT_INFRASTRUCTURE_FAQS} heading="Frequently Asked Questions" />
+  <ContactSection />
+</Base>

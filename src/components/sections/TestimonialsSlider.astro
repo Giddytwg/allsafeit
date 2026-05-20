@@ -1,0 +1,176 @@
+---
+import Icon from '../primitives/Icon.astro';
+import { TESTIMONIALS } from '../../data/testimonials';
+---
+
+<section class="section quote-slider-section smal-margin-top">
+  <div class="container">
+    <div class="section-content quote-slider-content">
+
+      <div class="content_grid">
+        <div class="title">
+          <h2 class="h3">Testimonials</h2>
+        </div>
+        <p class="lead-text">See what our clients are saying about our IT services</p>
+      </div>
+
+      <div class="rating-testimonial-wrppaer">
+        <img src="/images/Google__G__Logo.svg_1Google__G__Logo.svg.avif" alt="" class="google-logo" width="30" height="30" loading="lazy" />
+        <img src="/images/stars-ratings-saas-x-template.svg" alt="5 star rating" class="rating-stars" width="120" height="24" loading="lazy" />
+        <h3 class="h4">4.8 (56 reviews)</h3>
+      </div>
+
+      <div data-slider data-slider-delay="4000" class="quote-box-slider">
+        <div data-slider-mask class="quote-box-slider-mask">
+          {TESTIMONIALS.map(t => (
+            <div data-slider-slide class="quote-box-slide">
+              <div class="quote-box">
+                <img
+                  src="/images/stars-ratings-saas-x-template.svg"
+                  alt="5-star rating"
+                  class="image-26"
+                  width="120"
+                  height="24"
+                  loading="lazy"
+                />
+                <div class="lead-text color__darkblue bold-text">{t.quote}</div>
+                <div class="quote-author-wrap inside-quote-box">
+                  <div class="avatar-initial" aria-hidden="true">{t.author.charAt(0)}</div>
+                  <p class="badge-text">{t.author}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button data-slider-prev class="circle-button slider-prev" aria-label="Previous testimonial">
+          <div class="circle-button-icon-wrapper prev">
+            <Icon name="slider-arrow" class="circle-button-icon" />
+          </div>
+        </button>
+        <button data-slider-next class="circle-button slider-next" aria-label="Next testimonial">
+          <div class="circle-button-icon-wrapper">
+            <Icon name="slider-arrow" class="circle-button-icon" />
+          </div>
+        </button>
+      </div>
+
+      <a href="/testimonials" class="icon-button-link">
+        <div class="circle-button">
+          <div class="circle-button-icon-wrapper">
+            <Icon name="custom-arrow" class="icon--arrow" />
+          </div>
+        </div>
+        <span class="badge-text">See All Testimonials</span>
+      </a>
+
+      <div id="testimonial" class="slider-testimonial" aria-hidden="true" style="display:none;">
+        <div role="list" class="testimonial-list">
+          <div role="listitem" class="collection-item">
+            <div class="quote-box">
+              <img alt="" src="/images/stars-ratings-saas-x-template.svg" width="120" height="24" loading="lazy" />
+              <p class="lead-text color__darkblue"></p>
+              <div class="quote-author-wrap inside-quote-box">
+                <img alt="" src="/images/customer-02.webp" class="avatar" width="54" height="54" loading="lazy" />
+                <div><p class="badge-text"></p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .quote-box-slider {
+    background-color: transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+  }
+
+  .quote-box-slider-mask {
+    display: flex;
+    transition: transform 0.5s ease;
+    max-width: var(--container-4col);
+    overflow: visible;
+  }
+
+  .quote-box-slide {
+    min-width: var(--container-4col);
+    flex-shrink: 0;
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
+
+  .slider-prev,
+  .slider-next {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: inline-flex;
+  }
+
+  .circle-button-icon-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 18px;
+    height: 18px;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .circle-button-icon-wrapper.prev {
+    transform: rotate(180deg);
+  }
+
+  .circle-button-icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+  }
+
+  .rating-testimonial-wrppaer {
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .google-logo  { width: 30px; height: 30px; }
+  .image-26     { width: 120px; height: auto; }
+  .bold-text    { font-weight: 600; }
+  .slider-testimonial { display: none; }
+
+  .avatar-initial {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-brand-dark);
+    color: var(--color-light-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .icon--arrow {
+    line-height: 1;
+    width: 18px;
+    height: 18px;
+    display: flex;
+  }
+
+  @media (max-width: 991px) {
+    .quote-box-slider-mask { max-width: 100%; }
+    .quote-box-slide       { min-width: 100%; }
+  }
+</style>

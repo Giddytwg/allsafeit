@@ -1,0 +1,115 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroService from '../../components/sections/HeroService.astro';
+import SectionIntro from '../../components/sections/SectionIntro.astro';
+import SplitContent from '../../components/sections/SplitContent.astro';
+import ServiceCardList from '../../components/sections/ServiceCardList.astro';
+import TestimonialsSlider from '../../components/sections/TestimonialsSlider.astro';
+import TrustChecklist from '../../components/sections/TrustChecklist.astro';
+import LocationCards from '../../components/sections/LocationCards.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import ContactSection from '../../components/sections/ContactSection.astro';
+import { CYBERSECURITY_FAQS } from '../../data/faqs/cybersecurity';
+import type { ServiceItem } from '../../components/sections/ServiceCardList.astro';
+
+const coreServices: ServiceItem[] = [
+  {
+    title: 'Endpoint Protection (EDR)',
+    description: 'Advanced detection and response on every device. Stops ransomware, malware, and zero-day threats before they spread across your network.',
+  },
+  {
+    title: 'Email Security',
+    description: 'Multi-layer protection against phishing, spam, and business email compromise — the #1 attack vector for small businesses.',
+  },
+  {
+    title: 'Managed Firewall',
+    description: 'Next-gen firewall configured and monitored by our security team. Controls what gets in and out of your network, around the clock.',
+  },
+  {
+    title: 'Penetration Testing',
+    description: 'Ethical hackers test your defenses before real attackers do. Identify and fix vulnerabilities on your own terms.',
+  },
+  {
+    title: 'Security Awareness Training',
+    description: 'Turn your team from a liability into a security asset. Simulated phishing, training modules, and compliance reporting included.',
+  },
+  {
+    title: '24/7 Threat Monitoring (SIEM)',
+    description: 'Centralized security monitoring across your entire IT environment. Threats detected and neutralized before they cause damage.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Managed Cybersecurity Services',
+  url: 'https://www.allsafeit.com/services/cybersecurity',
+  serviceType: 'Cybersecurity',
+  description: 'AllSafe IT provides enterprise-grade Managed Cybersecurity Services designed to defend your business against ransomware, phishing, and data breaches.',
+  provider: { '@type': 'Organization', '@id': 'https://www.allsafeit.com#organization' },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.allsafeit.com' },
+    { '@type': 'ListItem', position: 2, name: 'Cybersecurity Services', item: 'https://www.allsafeit.com/services/cybersecurity' },
+  ],
+};
+---
+
+<Base
+  title="Cybersecurity Services for Small Businesses | AllSafe IT"
+  description="Protect your business with Cybersecurity Services for Small Businesses. Threat monitoring, EDR, email security, and proactive defense. Free assessment."
+  canonical="https://www.allsafeit.com/services/cybersecurity"
+  schema={[serviceSchema, breadcrumbSchema]}
+>
+  <HeroService
+    heading="Cybersecurity Services for Small Business"
+    lead="Cybersecurity services for small business that protect your data, maintain compliance, and let your team focus on growth without the constant worry of evolving cyber threats."
+    image="/images/Cybersecurity.avif"
+    imageAlt="Cybersecurity services protecting small business systems"
+  />
+
+  <SectionIntro heading="Cybersecurity that lets you focus on winning">
+    <p class="lead-text">Cyber threats continue to evolve, but your business shouldn't have to spend every day worrying about them. Cybersecurity services give small businesses enterprise-level protection without the enterprise-level cost or complexity.</p>
+    <p class="lead-text">You get 24/7 threat monitoring, proactive defense, and rapid response from a dedicated team of security experts. This isn't about reacting to problems after they happen — it's about preventing them in the first place.</p>
+    <p class="lead-text">We follow frameworks like the NIST Cybersecurity Framework and Zero Trust architecture to ensure every access point, every device, and every user is verified and protected. Your security posture improves over time, adapting to new threats as they emerge.</p>
+  </SectionIntro>
+
+  <SplitContent
+    heading="Layered security that works together"
+    image="/images/businesstruly.webp"
+    imageAlt="Security monitoring and threat protection for small business"
+    bg="gradient"
+  >
+    <p class="body-text">Real cybersecurity requires multiple layers working in harmony. Think of it like protecting a building — you wouldn't rely on just a lock or just an alarm. You need both, plus cameras, access controls, and trained security personnel.</p>
+    <p class="body-text">Our cybersecurity approach combines endpoint protection, network monitoring, email security, and security awareness training into a unified defense system. Each layer catches threats the others might miss.</p>
+    <p class="body-text">We use advanced tools like SIEM for centralized threat monitoring and EDR to protect devices wherever they are. This layered approach means cyber threats get detected and neutralized quickly — often before you even know they existed.</p>
+  </SplitContent>
+
+  <ServiceCardList
+    heading="Core Managed Cybersecurity Services"
+    lead="Every small business needs a solid cybersecurity foundation. We've built our core services around the most critical security needs businesses face today."
+    items={coreServices}
+  />
+
+  <SplitContent
+    heading="Compliance made manageable"
+    image="/images/toptiercybersecurity.avif"
+    imageAlt="Compliance and cybersecurity services for small businesses"
+    imageRight
+    bg="gradient"
+  >
+    <p class="body-text">Meeting compliance requirements doesn't have to be overwhelming. Our cybersecurity compliance services align your security controls with industry standards and regulatory frameworks.</p>
+    <p class="body-text">Whether you need HIPAA compliance for healthcare data, PCI-DSS for payment card processing, or SOC 2 for customer trust, we map your security measures to the required controls and maintain documentation as regulations evolve.</p>
+    <p class="body-text">When audit time comes, you're ready with organized evidence and documented procedures. Our cybersecurity audit services provide independent verification that your controls are working as intended.</p>
+  </SplitContent>
+
+  <TrustChecklist />
+  <TestimonialsSlider />
+  <LocationCards />
+  <FaqSection faqs={CYBERSECURITY_FAQS} heading="Frequently Asked Questions" />
+  <ContactSection />
+</Base>

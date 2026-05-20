@@ -1,0 +1,114 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroService from '../../components/sections/HeroService.astro';
+import SectionIntro from '../../components/sections/SectionIntro.astro';
+import SplitContent from '../../components/sections/SplitContent.astro';
+import ServiceCardList from '../../components/sections/ServiceCardList.astro';
+import TestimonialsSlider from '../../components/sections/TestimonialsSlider.astro';
+import TrustChecklist from '../../components/sections/TrustChecklist.astro';
+import LocationCards from '../../components/sections/LocationCards.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import ContactSection from '../../components/sections/ContactSection.astro';
+import { IT_CONSULTING_FAQS } from '../../data/faqs/it-consulting';
+import type { ServiceItem } from '../../components/sections/ServiceCardList.astro';
+
+const coreServices: ServiceItem[] = [
+  {
+    title: 'vCIO Services',
+    description: 'Strategic technology leadership without the full-time cost. Quarterly roadmaps, vendor management, budget planning, and executive-level technology guidance.',
+  },
+  {
+    title: 'Technology Roadmap Planning',
+    description: 'Align IT investments with business goals. Know exactly what to spend, when, and why — with no surprises and clear ROI at every stage.',
+  },
+  {
+    title: 'Cloud Migration Consulting',
+    description: 'Plan and execute migrations to Microsoft Azure and Microsoft 365 with minimal disruption, optimized cost, and maximum operational benefit.',
+  },
+  {
+    title: 'IT Assessment Services',
+    description: 'Comprehensive audit of your current environment. Identify gaps, risks, and opportunities before they become costly problems.',
+  },
+  {
+    title: 'AI & Automation Consulting',
+    description: 'AllSafe Intelligence helps automate repetitive tasks, integrate AI tools, and free your team to focus on high-value strategic work.',
+  },
+  {
+    title: 'Vendor Management',
+    description: "We manage your technology relationships so you don't have to. Better pricing, accountability, and results from every vendor you work with.",
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'IT Consulting Services',
+  url: 'https://www.allsafeit.com/services/it-consulting',
+  serviceType: 'IT Consulting',
+  description: 'AllSafe IT delivers strategic IT consulting services that align technology with business goals, improve operational efficiency, and drive growth.',
+  provider: { '@type': 'Organization', '@id': 'https://www.allsafeit.com#organization' },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.allsafeit.com' },
+    { '@type': 'ListItem', position: 2, name: 'IT Consulting Services', item: 'https://www.allsafeit.com/services/it-consulting' },
+  ],
+};
+---
+
+<Base
+  title="IT Consulting Services for Small Businesses | AllSafe IT"
+  description="Strategic IT consulting services that align technology with your business goals. vCIO, cloud migration, AI automation, and technology roadmap planning. Free assessment."
+  canonical="https://www.allsafeit.com/services/it-consulting"
+  schema={[serviceSchema, breadcrumbSchema]}
+>
+  <HeroService
+    heading="IT Consulting Services for Small Businesses"
+    lead="Strategic IT consulting services for small businesses that align technology with your goals, improve efficiency, and drive growth without the overhead of a full-time IT team."
+    image="/images/vCIO.avif"
+    imageAlt="IT consulting services for small business strategic planning"
+  />
+
+  <SectionIntro heading="Technology that drives your strategy">
+    <p class="lead-text">Technology decisions have long-term consequences. The wrong platform choice, a poorly planned cloud migration, or misaligned IT spending can cost you years of momentum.</p>
+    <p class="lead-text">IT consulting services give you experienced technology leadership without the full-time executive cost. We analyze your current environment, understand your business goals, and build a technology strategy designed to get you there.</p>
+    <p class="lead-text">Whether you need a fractional CIO, a cloud migration plan, or an honest assessment of where your IT stands today — we provide guidance grounded in 20+ years of real-world experience serving California businesses.</p>
+  </SectionIntro>
+
+  <SplitContent
+    heading="Strategic IT Management for growing businesses"
+    image="/images/managedIThollywood.avif"
+    imageAlt="IT consulting helping small businesses align technology with goals"
+    bg="gradient"
+  >
+    <p class="body-text">Technology should drive strategic growth, not slow it down. Our IT consulting approach combines managed security services with long-term planning aligned to your business outcomes.</p>
+    <p class="body-text">We provide consulting services that align infrastructure investments with business outcomes. Whether you're planning cloud migrations, evaluating software for operational efficiency, or strengthening security against cyber threats, our IT experts help you make informed decisions.</p>
+    <p class="body-text">Our assessment services evaluate your current IT environment, identify opportunities, and develop roadmaps that support your growth — then execute them with a proven process that minimizes disruption.</p>
+  </SplitContent>
+
+  <SplitContent
+    heading="AI & Automation that actually works"
+    image="/images/office.avif"
+    imageAlt="AllSafe IT consulting team implementing AI automation solutions"
+    imageRight
+  >
+    <p class="body-text">AllSafe Intelligence is our AI-powered automation platform designed for small and mid-sized businesses. We identify the repetitive, time-consuming tasks holding your team back and automate them — freeing your people to focus on high-value work.</p>
+    <p class="body-text">From workflow automation and intelligent document processing to AI-assisted customer service and predictive analytics, we help you implement AI tools that deliver real operational improvements.</p>
+    <p class="body-text">Our approach is pragmatic: we don't sell AI for its own sake. We identify specific business problems, find the right AI tools to solve them, and measure the results. Technology that supports you, not the other way around.</p>
+  </SplitContent>
+
+  <ServiceCardList
+    heading="Core IT Consulting Services"
+    lead="Strategic technology guidance across every dimension of your IT environment, aligned to your business goals and growth trajectory."
+    items={coreServices}
+  />
+
+  <TrustChecklist />
+  <TestimonialsSlider />
+  <LocationCards />
+  <FaqSection faqs={IT_CONSULTING_FAQS} heading="Frequently Asked Questions" />
+  <ContactSection />
+</Base>

@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroService from '../../components/sections/HeroService.astro';
+import SectionIntro from '../../components/sections/SectionIntro.astro';
+import SplitContent from '../../components/sections/SplitContent.astro';
+import ServiceCardGrid from '../../components/sections/ServiceCardGrid.astro';
+import TrustChecklist from '../../components/sections/TrustChecklist.astro';
+import TestimonialsSlider from '../../components/sections/TestimonialsSlider.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import ContactSection from '../../components/sections/ContactSection.astro';
+import { SECONDARY_LOCATIONS } from '../../data/secondary-locations';
+
+export function getStaticPaths() {
+  return SECONDARY_LOCATIONS.map(loc => ({
+    params: { city: loc.slug },
+    props: { loc },
+  }));
+}
+
+const { loc } = Astro.props;
+---
+
+<Base
+  title={loc.title}
+  description={loc.description}
+  canonical={loc.canonical}
+  schema={loc.schema as Record<string, unknown>[]}
+>
+  <HeroService
+    heading={loc.heroHeading}
+    lead={loc.heroLead}
+    image={loc.heroImage}
+    imageAlt={loc.heroImageAlt}
+  />
+
+  <SectionIntro heading={loc.introHeading}>
+    {loc.introParagraphs.map(p => <p class="lead-text">{p}</p>)}
+  </SectionIntro>
+
+  <SplitContent
+    heading={loc.splitHeading}
+    image={loc.splitImage}
+    imageAlt={loc.splitImageAlt}
+    bg="gradient"
+  >
+    {loc.splitParagraphs.map(p => <p class="body-text">{p}</p>)}
+  </SplitContent>
+
+  <ServiceCardGrid />
+  <TrustChecklist />
+  <TestimonialsSlider />
+
+  <FaqSection
+    faqs={loc.faqs}
+    heading={`Common Questions — IT Services in ${loc.cityName}`}
+  />
+
+  <ContactSection />
+</Base>

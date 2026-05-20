@@ -1,0 +1,113 @@
+---
+import Base from '../layouts/Base.astro';
+import TestimonialsSlider from '../components/sections/TestimonialsSlider.astro';
+import TrustChecklist from '../components/sections/TrustChecklist.astro';
+import LocationCards from '../components/sections/LocationCards.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+import { TESTIMONIALS } from '../data/testimonials';
+---
+
+<Base
+  title="Client Testimonials | AllSafe IT Managed IT Services"
+  description="Read what AllSafe IT clients say about our managed IT services, cybersecurity, and IT support. 94.9% CSAT, 98% retention. California businesses trust us."
+  canonical="https://www.allsafeit.com/testimonials"
+>
+  <div class="testimonials-hero-wrap">
+    <div aria-hidden="true" style="height: var(--navbar-height)"></div>
+    <section class="section testimonials-hero">
+      <div class="container">
+        <div class="testimonials-hero-inner">
+          <div class="badge-text testimonials-badge">[Client Stories]</div>
+          <h1 class="h2">What our clients say about AllSafe IT</h1>
+          <p class="lead-text">94.9% customer satisfaction. 98% retention. These numbers come from the businesses we serve every day — not from a marketing deck.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="all-testimonials-grid">
+        {TESTIMONIALS.map(t => (
+          <div class="testimonial-card">
+            <div class="quote-mark">"</div>
+            <blockquote class="lead-text testimonial-quote">{t.quote}</blockquote>
+            <p class="badge-text testimonial-author">— {t.author}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <TrustChecklist />
+  <TestimonialsSlider />
+  <LocationCards />
+  <ContactSection />
+</Base>
+
+<style>
+  .testimonials-hero-wrap {
+    margin-top: var(--navbar-negative-height);
+    background-color: var(--color-brand-dark);
+  }
+
+  .testimonials-hero {
+    padding-bottom: var(--spacing-section-sm);
+  }
+
+  .testimonials-hero-inner {
+    max-width: var(--container-8col);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .testimonials-badge {
+    color: var(--color-accent);
+  }
+
+  .testimonials-hero-inner h1,
+  .testimonials-hero-inner .lead-text {
+    color: var(--color-text-light);
+  }
+
+  .all-testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    background-color: var(--color-light-2);
+    border-radius: var(--radius-default);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .quote-mark {
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-weight: 700;
+  }
+
+  .testimonial-quote {
+    font-style: italic;
+    flex: 1;
+  }
+
+  .testimonial-author {
+    color: var(--color-brand-primary);
+  }
+
+  @media (max-width: 991px) {
+    .all-testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 767px) {
+    .all-testimonials-grid { grid-template-columns: 1fr; }
+  }
+</style>

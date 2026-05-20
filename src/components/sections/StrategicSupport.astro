@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import photoEmployee from '../../assets/images/allsafe-employee-1.avif';
+---
+
+<section class="section bg-gradient">
+  <div class="container">
+    <div class="section-content">
+      <div class="grid">
+        <div class="content">
+          <h2 class="h3">Strategic Managed IT Support for California Enterprises</h2>
+          <p class="heading-20">Not Just Support. Strategic Growth.<br />Managed IT services in California have evolved. So have we.</p>
+          <div class="list">
+            <p class="lead-text">For 20+ years, we've kept IT systems running smoothly across Southern California. But modern business demands more. We've seen companies try to bolt new tools onto broken processes. It fails. That is why every solution we design is backed by 24/7 helpdesk access and remote IT support, giving businesses reliable IT Support California teams can depend on when it matters most.</p>
+            <p class="richtext__paragraphs">We build differently:</p>
+            <ul class="body-text">
+              <li><strong class="block-text">Cloud that works:</strong> Tailored Microsoft 365 and Microsoft Azure solutions. No paying for what you don't need. Technology solutions designed for mid sized businesses and growing enterprises.</li>
+              <li><strong class="block-text">Security built in:</strong> Zero trust and layered protection with Dark Web Monitoring, Vulnerability Scanning, and Penetration Testing. Security is how IT should work. Cybersecurity services that protect sensitive data.</li>
+              <li><strong class="block-text">AI-powered operations:</strong> AllSafe Intelligence automates your busywork so your team focuses on high-value tasks. Best IT solutions backed by the EOS (Entrepreneurial Operating System) process delivering clear accountability and consistent results.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="square-image-wrap sticky">
+          <Image
+            class="square-parallax-image reversed"
+            src={photoEmployee}
+            alt="Team lead for Managed Services in California office"
+            widths={[300, 500]}
+            sizes="(max-width: 991px) 90vw, 500px"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .richtext__paragraphs {
+    font-size: var(--text-lead);
+    line-height: var(--leading-lead);
+  }
+
+  .block-text {
+    color: var(--color-accent);
+    font-size: var(--text-h6);
+    display: block;
+  }
+
+  .heading-20 {
+    font-size: 1.125rem;
+    line-height: 1.6em;
+    color: var(--color-brand-dark);
+  }
+</style>

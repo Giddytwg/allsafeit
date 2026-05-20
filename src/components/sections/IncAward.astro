@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import photoTeam from '../../assets/images/6939794b98a8d163dbb5dd90_expertguidance-1.avif';
+---
+
+<section class="section bg-gradient">
+  <div class="container">
+    <div class="grid">
+      <div class="justify-vertical">
+        <div class="content">
+          <h2 class="h3">An Inc. 5000 Company</h2>
+          <div class="widget__inc-width">
+            <img src="/images/Inc5000__Allsafeit.avif" loading="lazy" alt="Inc 5000 logo" width="150" height="60" />
+          </div>
+          <div class="content">
+            <p class="lead-text">Being an Inc. 5000 company means we're one of the fastest-growing private companies in the U.S.<br /><br />This award reflects our obsession with customer satisfaction and retention. For you, it's a guarantee of quality. It means you are partnering with a stable, high-performance team that has the scale to handle your technology today, and the momentum to support you five years from now.</p>
+            <a href="/contact-us" class="button small">
+              <div class="button-text-wrapper">
+                <span class="button-text">Talk to an Expert</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="square-image-wrap">
+        <Image
+          src={photoTeam}
+          loading="lazy"
+          alt="Managed IT professionals of AllSafe IT at our SoCal headquarters"
+          class="square-parallax-image"
+          widths={[300, 500]}
+          sizes="(max-width: 991px) 90vw, 500px"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .widget__inc-width { max-width: 150px; }
+</style>

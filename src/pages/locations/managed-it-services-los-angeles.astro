@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroService from '../../components/sections/HeroService.astro';
+import SectionIntro from '../../components/sections/SectionIntro.astro';
+import SplitContent from '../../components/sections/SplitContent.astro';
+import ServiceCardGrid from '../../components/sections/ServiceCardGrid.astro';
+import TestimonialsSlider from '../../components/sections/TestimonialsSlider.astro';
+import TrustChecklist from '../../components/sections/TrustChecklist.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import ContactSection from '../../components/sections/ContactSection.astro';
+import { LOS_ANGELES_FAQS } from '../../data/faqs/los-angeles';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.allsafeit.com' },
+    { '@type': 'ListItem', position: 2, name: 'Managed IT Services Los Angeles', item: 'https://www.allsafeit.com/locations/managed-it-services-los-angeles' },
+  ],
+};
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'AllSafe IT — Los Angeles',
+  url: 'https://www.allsafeit.com/locations/managed-it-services-los-angeles',
+  telephone: '+1-888-400-2748',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '1800 Vine St',
+    addressLocality: 'Los Angeles',
+    addressRegion: 'CA',
+    postalCode: '90028',
+    addressCountry: 'US',
+  },
+};
+---
+
+<Base
+  title="Managed IT Services Los Angeles | AllSafe IT"
+  description="Managed IT services in Los Angeles from AllSafe IT's Hollywood office at 1800 Vine St. SOC 2-compliant IT support, cybersecurity, and 24/7 helpdesk for LA businesses."
+  canonical="https://www.allsafeit.com/locations/managed-it-services-los-angeles"
+  schema={[breadcrumbSchema, localBusinessSchema]}
+>
+  <HeroService
+    heading="Managed IT Services Los Angeles"
+    lead="You're tired of talking about tech support. We hear that. It's time for tech to support you. AllSafe IT operates from 1800 North Vine Street in Hollywood — delivering SOC 2-compliant managed IT services Los Angeles companies depend on, enterprise-grade cybersecurity, and AllSafe Intelligence."
+    image="/images/allsafeitlosangeles.avif"
+    imageAlt="AllSafe IT Los Angeles Hollywood office — managed IT services"
+  />
+
+  <SectionIntro heading="Los Angeles Managed IT Services — From Hollywood">
+    <p class="lead-text">Los Angeles businesses operate in a fast-moving, competitive environment. Slow IT, security gaps, or unexpected downtime don't just cost money — they cost market position.</p>
+    <p class="lead-text">Our Hollywood office puts us close to businesses throughout West LA, Beverly Hills, Culver City, Santa Monica, and the greater Los Angeles area. Remote response for critical issues is within 15 minutes, 24/7. Most issues — 85–90% — resolve remotely. When onsite response is needed, we're nearby.</p>
+    <p class="lead-text">We understand LA businesses: entertainment companies protecting creative assets, healthcare practices maintaining HIPAA compliance, financial firms securing client data, and professional services organizations scaling efficiently.</p>
+  </SectionIntro>
+
+  <SplitContent
+    heading="Why LA businesses choose AllSafe IT"
+    image="/images/managedIThollywood.avif"
+    imageAlt="AllSafe IT serving Los Angeles businesses from Hollywood"
+    bg="gradient"
+  >
+    <p class="body-text">Los Angeles has no shortage of IT vendors. What's rare is a managed services partner who understands both the technical requirements and the business context of operating in this market.</p>
+    <p class="body-text">We support entertainment companies under NDA requirements, healthcare organizations navigating HIPAA, financial firms dealing with CCPA and SEC requirements, and startups moving fast. Each industry has different needs, compliance pressures, and risk profiles. We know them all.</p>
+    <p class="body-text">Our SOC 2 certification means we undergo the same rigorous audits we help our clients prepare for. We understand compliance from the inside — because we live it too.</p>
+  </SplitContent>
+
+  <ServiceCardGrid />
+  <TrustChecklist />
+  <TestimonialsSlider />
+  <FaqSection faqs={LOS_ANGELES_FAQS} heading="Managed IT Services Los Angeles — Common Questions" />
+  <ContactSection />
+</Base>

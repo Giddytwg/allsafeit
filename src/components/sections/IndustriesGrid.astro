@@ -1,0 +1,102 @@
+---
+import Icon from '../primitives/Icon.astro';
+import { INDUSTRIES } from '../../data/industries';
+---
+
+<section class="section">
+  <div class="container">
+    <div class="section-content">
+      <div class="content_grid">
+        <div class="title">
+          <h2 class="h3 text_center">Industries We Serve: Managed IT Solutions for California Businesses</h2>
+        </div>
+      </div>
+      <div class="industry-card-grid">
+        {INDUSTRIES.map(ind => (
+          <div class="info-card">
+            <div class="icon">
+              <img src={ind.iconWhite} class="widget__embed-icons-white" alt="" width="32" height="32" loading="lazy" />
+              <img src={ind.iconBlue}  class="widget__embed-icons-blue"  alt="" width="32" height="32" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <div class="card-text-copy">
+                <h3 class="h4">{ind.heading}</h3>
+                <div class="lead-text body-text">{ind.desc}</div>
+              </div>
+              <div class="button-flex">
+                <a href={ind.href} class="badge-text-blue">{ind.heading}</a>
+                <Icon name="arrow-right" class="small_icon color__lightblue" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 24px;
+    border-radius: var(--radius-default);
+    background-color: var(--color-light-2);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .info-card .icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+  }
+
+  .info-card .widget__embed-icons-white,
+  .info-card .widget__embed-icons-blue {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .info-card .widget__embed-icons-white { opacity: 0; }
+  .info-card .widget__embed-icons-blue  { opacity: 1; }
+
+  .info-card:hover { background-color: var(--color-brand-dark); }
+
+  .info-card:hover .widget__embed-icons-white { opacity: 1; }
+  .info-card:hover .widget__embed-icons-blue  { opacity: 0; }
+
+  .info-card:hover .h4,
+  .info-card:hover .lead-text,
+  .info-card:hover .body-text { color: var(--color-light-1); }
+
+  .info-card:hover .badge-text-blue { color: var(--color-accent); }
+
+  .card-text-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .industry-card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+    margin-top: var(--spacing-section-sm);
+  }
+
+  @media (max-width: 991px) {
+    .industry-card-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 767px) {
+    .industry-card-grid { grid-template-columns: 1fr; }
+  }
+</style>

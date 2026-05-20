@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroService from '../../components/sections/HeroService.astro';
+import SectionIntro from '../../components/sections/SectionIntro.astro';
+import SplitContent from '../../components/sections/SplitContent.astro';
+import ServiceCardGrid from '../../components/sections/ServiceCardGrid.astro';
+import TestimonialsSlider from '../../components/sections/TestimonialsSlider.astro';
+import TrustChecklist from '../../components/sections/TrustChecklist.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import ContactSection from '../../components/sections/ContactSection.astro';
+import { ORANGE_COUNTY_FAQS } from '../../data/faqs/orange-county';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.allsafeit.com' },
+    { '@type': 'ListItem', position: 2, name: 'Managed IT Services Orange County', item: 'https://www.allsafeit.com/locations/managed-it-services-orange-county' },
+  ],
+};
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'AllSafe IT — Orange County',
+  url: 'https://www.allsafeit.com/locations/managed-it-services-orange-county',
+  telephone: '+1-888-400-2748',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '4695 MacArthur Ct, 11th Floor',
+    addressLocality: 'Newport Beach',
+    addressRegion: 'CA',
+    postalCode: '92660',
+    addressCountry: 'US',
+  },
+};
+---
+
+<Base
+  title="Managed IT Services Orange County | AllSafe IT"
+  description="Managed IT services in Orange County from AllSafe IT's Newport Beach office. SOC 2-compliant IT support, cybersecurity, and 24/7 helpdesk for OC businesses in Irvine, Anaheim, Newport Beach."
+  canonical="https://www.allsafeit.com/locations/managed-it-services-orange-county"
+  schema={[breadcrumbSchema, localBusinessSchema]}
+>
+  <HeroService
+    heading="Managed IT Services Orange County"
+    lead="You're tired of talking about tech support. We hear that. It's time for tech to support you. AllSafe IT operates from Newport Beach — bringing the SOC 2-compliant managed IT services Orange County companies rely on, complete cybersecurity, and AllSafe Intelligence."
+    image="/images/office.avif"
+    imageAlt="AllSafe IT Orange County Newport Beach office — managed IT services"
+  />
+
+  <SectionIntro heading="Orange County Managed IT Services — From Newport Beach">
+    <p class="lead-text">Orange County businesses face unique challenges: dense competition, strong compliance requirements in healthcare and financial services, and a business environment where reputation and reliability matter above all.</p>
+    <p class="lead-text">Our Newport Beach office gives us proximity to businesses throughout Irvine, Anaheim, Newport Beach, Santa Ana, and the greater OC region. We understand the local business landscape — from biotech and healthcare in Irvine to financial services in Newport Beach to professional services throughout the county.</p>
+    <p class="lead-text">SOC 2-compliant managed IT at flat monthly rates. 24/7 helpdesk. Local onsite support. Strategic vCIO guidance. Everything your OC business needs from one trusted partner.</p>
+  </SectionIntro>
+
+  <SplitContent
+    heading="Why Orange County businesses choose AllSafe IT"
+    image="/images/Retail.avif"
+    imageAlt="AllSafe IT serving Orange County businesses"
+    bg="gradient"
+  >
+    <p class="body-text">Orange County has specific compliance demands. Healthcare organizations need HIPAA expertise. Financial firms need PCI-DSS and SEC knowledge. Professional services companies navigate CCPA requirements daily.</p>
+    <p class="body-text">We've built deep expertise across these regulatory environments. Our SOC 2 certification isn't just a credential — it means we understand compliance from the inside and can help your business meet its obligations without disrupting operations.</p>
+    <p class="body-text">For growing OC businesses, our co-managed IT model offers the best of both worlds: supplement your existing IT resources with our expertise, coverage, and strategic guidance without replacing what's already working.</p>
+  </SplitContent>
+
+  <ServiceCardGrid />
+  <TrustChecklist />
+  <TestimonialsSlider />
+  <FaqSection faqs={ORANGE_COUNTY_FAQS} heading="Managed IT Services Orange County — Common Questions" />
+  <ContactSection />
+</Base>

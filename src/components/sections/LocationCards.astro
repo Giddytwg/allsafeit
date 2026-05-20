@@ -1,0 +1,45 @@
+---
+import Icon from '../primitives/Icon.astro';
+import { LOCATIONS } from '../../data/locations';
+---
+
+<section class="section bg-gradient">
+  <div class="container">
+    <div class="section-content horizontal">
+      <div class="centered-title">
+        <h2 class="h3 text_center"><strong>Rapid On-Site IT Support Near These Locations</strong></h2>
+      </div>
+      <div class="locations-grid">
+        {LOCATIONS.map(loc => (
+          <div class="service-card bg-brand-2 _1rem">
+            <div class="div-block-21">
+              <h3 class="h4 color__white-shade1">{loc.city}</h3>
+              <p class="lead-text color__white-shade1">
+                {loc.address[0]}<br />{loc.address[1]}<br /><br />
+                <strong>Phone:</strong> <a href={`tel:${loc.phone}`}>(888) 400-2748</a>
+              </p>
+            </div>
+            <div class="button-flex">
+              <a href={loc.href} class="badge-text-white">{loc.linkLabel}</a>
+              <Icon name="arrow-right" class="small_icon color__lightblue" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .locations-grid {
+    margin-top: var(--spacing-section-sm);
+    margin-bottom: var(--spacing-section-sm);
+    gap: 1rem;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
+  }
+
+  @media (max-width: 991px) { .locations-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+  @media (max-width: 767px) { .locations-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroService from '../../components/sections/HeroService.astro';
+import SectionIntro from '../../components/sections/SectionIntro.astro';
+import SplitContent from '../../components/sections/SplitContent.astro';
+import ServiceCardGrid from '../../components/sections/ServiceCardGrid.astro';
+import TestimonialsSlider from '../../components/sections/TestimonialsSlider.astro';
+import TrustChecklist from '../../components/sections/TrustChecklist.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import ContactSection from '../../components/sections/ContactSection.astro';
+import { PASADENA_FAQS } from '../../data/faqs/pasadena';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.allsafeit.com' },
+    { '@type': 'ListItem', position: 2, name: 'Managed IT Services Pasadena', item: 'https://www.allsafeit.com/locations/managed-it-services-pasadena' },
+  ],
+};
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'AllSafe IT — Pasadena',
+  url: 'https://www.allsafeit.com/locations/managed-it-services-pasadena',
+  telephone: '+1-888-400-2748',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '70 South Lake Ave, Suite 690',
+    addressLocality: 'Pasadena',
+    addressRegion: 'CA',
+    postalCode: '91101',
+    addressCountry: 'US',
+  },
+};
+---
+
+<Base
+  title="Managed IT Services Pasadena | AllSafe IT"
+  description="Managed IT services in Pasadena from AllSafe IT headquarters at 70 South Lake Ave. SOC 2-compliant IT support, cybersecurity, and strategic consulting for Pasadena businesses."
+  canonical="https://www.allsafeit.com/locations/managed-it-services-pasadena"
+  schema={[breadcrumbSchema, localBusinessSchema]}
+>
+  <HeroService
+    heading="Managed IT Services Pasadena"
+    lead="You're tired of talking about tech support. We hear that. It's time for tech to support you. AllSafe IT is headquartered at 70 South Lake Avenue in Pasadena's Downtown Financial District — delivering SOC 2-compliant managed IT services, cybersecurity, and AllSafe Intelligence to Pasadena businesses."
+    image="/images/AllSafeITinPasadena.webp"
+    imageAlt="AllSafe IT Pasadena headquarters — managed IT services"
+  />
+
+  <SectionIntro heading="Pasadena's Local Managed IT Services Provider">
+    <p class="lead-text">Proximity matters when your server goes down. Our Pasadena headquarters means a technician can be onsite at your business quickly — not after a two-hour drive from across town.</p>
+    <p class="lead-text">We've served businesses throughout the San Gabriel Valley for over 20 years. We understand the Pasadena business environment: the financial firms along South Lake Avenue, the healthcare practices in Old Town, the professional service companies throughout the 626.</p>
+    <p class="lead-text">SOC 2-compliant, 94.9% CSAT, 98% client retention. These aren't marketing claims — they're audited metrics that reflect how we work.</p>
+  </SectionIntro>
+
+  <SplitContent
+    heading="Why Pasadena businesses choose AllSafe IT"
+    image="/images/AllSafeITinPasadena.webp"
+    imageAlt="AllSafe IT serving Pasadena businesses"
+    bg="gradient"
+  >
+    <p class="body-text">Being headquartered in Pasadena isn't incidental — it's how we deliver better service. We know your neighborhood, your internet providers, your office buildings, and your local compliance landscape.</p>
+    <p class="body-text">For critical issues, our remote team responds within 15 minutes. For onsite emergencies, we can typically dispatch a technician within 1–2 hours. 85–90% of issues resolve remotely without requiring a site visit.</p>
+    <p class="body-text">We also serve surrounding areas including Glendale, Montebello, Pomona, and throughout the San Gabriel Valley — bringing the same local expertise wherever you need it.</p>
+  </SplitContent>
+
+  <ServiceCardGrid />
+  <TrustChecklist />
+  <TestimonialsSlider />
+  <FaqSection faqs={PASADENA_FAQS} heading="Managed IT Services Pasadena — Common Questions" />
+  <ContactSection />
+</Base>

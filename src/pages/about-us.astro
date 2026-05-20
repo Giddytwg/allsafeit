@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionIntro from '../components/sections/SectionIntro.astro';
+import SplitContent from '../components/sections/SplitContent.astro';
+import TrustChecklist from '../components/sections/TrustChecklist.astro';
+import TestimonialsSlider from '../components/sections/TestimonialsSlider.astro';
+import LocationCards from '../components/sections/LocationCards.astro';
+import ContactSection from '../components/sections/ContactSection.astro';
+---
+
+<Base
+  title="About AllSafe IT | Managed IT Services California"
+  description="Learn about AllSafe IT — 20+ years serving California businesses with proactive managed IT services, cybersecurity, and strategic technology consulting. SOC 2 certified."
+  canonical="https://www.allsafeit.com/about-us"
+>
+  <div class="about-hero-wrap">
+    <div aria-hidden="true" style="height: var(--navbar-height)"></div>
+    <section class="section about-hero-section">
+      <div class="container">
+        <div class="about-hero-inner">
+          <div class="badge-text about-badge">[About us]</div>
+          <h1 class="h2 text-center">Giving you the perfect experience through personalized IT support</h1>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <SectionIntro heading="We empower businesses with proactive IT support">
+    <p class="lead-text">AllSafe IT has been serving small and mid-sized businesses across Southern California for over 20 years. We started with a simple belief: technology should support your business, not the other way around.</p>
+    <p class="lead-text">We've grown from a small IT company into a 7x CRN MSP 500 award winner, SOC 2 certified, and serving clients from our offices in Pasadena, Los Angeles, and Orange County.</p>
+    <p class="lead-text">But the core belief hasn't changed. Every decision we make — from how we hire, to how we respond to tickets, to how we build technology roadmaps — starts with a question: does this support our clients' success?</p>
+  </SectionIntro>
+
+  <SplitContent
+    heading="Two Decades of Doing the Work"
+    image="/images/AllsafeIT-team.avif"
+    imageAlt="AllSafe IT team — 20 years serving California businesses"
+    bg="gradient"
+  >
+    <p class="body-text">Since 2005, we've helped businesses across healthcare, financial services, legal, manufacturing, retail, entertainment, and professional services turn IT from an obstacle into an advantage.</p>
+    <p class="body-text">We've seen what happens when businesses treat IT as an afterthought. Ransomware attacks, compliance failures, expensive emergency repairs, lost productivity, and damaged client relationships. We've also seen what happens when businesses get IT right: sustainable growth, competitive advantage, and teams that actually enjoy their technology.</p>
+    <p class="body-text">Our mission is to make downtime obsolete — to give you and your team your time back so you can focus on your business.</p>
+  </SplitContent>
+
+  <div class="section bg-brand-2">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-number color__white-shade1">94.9%</div>
+          <p class="body-text color__white-shade1">Customer satisfaction rate for helpdesk support</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number color__white-shade1">98%</div>
+          <p class="body-text color__white-shade1">Client retention rate — clients stay because results matter</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number color__white-shade1">20+</div>
+          <p class="body-text color__white-shade1">Years serving small and mid-sized businesses across SoCal</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number color__white-shade1">7×</div>
+          <p class="body-text color__white-shade1">CRN MSP 500 winner — recognized excellence in managed services</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <SplitContent
+    heading="Transform your business with cybersecurity-focused IT"
+    image="/images/office.avif"
+    imageAlt="AllSafe IT office — cybersecurity-focused managed IT services"
+    imageRight
+  >
+    <p class="body-text">Modern business demands more than keeping the lights on. Every client we serve gets proactive security built into their IT foundation — not bolted on as an afterthought.</p>
+    <p class="body-text">We design, deploy, and manage technology stacks built around three principles: reliability, security, and strategic alignment. Your systems should work when you need them, protect what matters, and support where you're going — not just where you are today.</p>
+    <p class="body-text">SOC 2 certification means we hold ourselves to the same standards we help our clients achieve. Independent auditors verify our security practices annually. We document everything, because accountability isn't optional.</p>
+  </SplitContent>
+
+  <div class="section">
+    <div class="container">
+      <div class="values-section">
+        <div class="values-title">
+          <h2 class="h3 text_center">These are the standards we hold ourselves to...</h2>
+        </div>
+        <div class="values-grid">
+          <div class="value-card">
+            <h3 class="h5 bold">We do what we say we'll do.</h3>
+            <p class="lead-text body-text">We deal in facts, not assumptions. We cultivate the trust of our partners every day by finishing what we start and keeping our word.</p>
+          </div>
+          <div class="value-card">
+            <h3 class="h5 bold">We care about the process.</h3>
+            <p class="lead-text body-text">The best processes lead to the best client experience. We exceed expectations by being prepared. NIST aligned and SOC 2 compliant — because we value accountability.</p>
+          </div>
+          <div class="value-card">
+            <h3 class="h5 bold">We put our clients first.</h3>
+            <p class="lead-text body-text">Every decision we make is filtered through one question: does this support our clients' success? Technology should serve people, not the other way around.</p>
+          </div>
+          <div class="value-card">
+            <h3 class="h5 bold">We invest in our people.</h3>
+            <p class="lead-text body-text">Our team's expertise is our clients' advantage. Ongoing training, certifications, and a culture of continuous improvement keeps our people — and your technology — sharp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <TrustChecklist />
+  <TestimonialsSlider />
+  <LocationCards />
+  <ContactSection />
+</Base>
+
+<style>
+  .about-hero-wrap {
+    margin-top: var(--navbar-negative-height);
+    background-color: var(--color-light-2);
+  }
+
+  .about-hero-section {
+    padding-bottom: 0;
+  }
+
+  .about-hero-inner {
+    text-align: center;
+    max-width: var(--container-8col);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-badge {
+    color: var(--color-accent);
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: var(--spacing-section-sm) 0;
+  }
+
+  .metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .metric-number {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1;
+    font-family: var(--font-mono);
+  }
+
+  .values-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-section-sm);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .value-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background-color: var(--color-light-2);
+    border-radius: var(--radius-default);
+  }
+
+  .bold { font-weight: 700; }
+
+  @media (max-width: 991px) {
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .values-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 479px) {
+    .metrics-grid { grid-template-columns: 1fr; }
+  }
+</style>

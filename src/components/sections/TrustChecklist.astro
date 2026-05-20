@@ -1,0 +1,99 @@
+---
+import { Image } from 'astro:assets';
+import Icon from '../primitives/Icon.astro';
+import photoItPro from '../../assets/images/DSC_2042DSC_2041.avif';
+
+const items = [
+  {
+    label: 'SOC 2 compliant',
+    body: "Robust security practices that meet the highest independent standards. We're audited so you can trust our current IT setup protects your data.",
+    static: true,
+  },
+  {
+    label: '97% CSAT',
+    body: 'Clients rate their experience because it matters. Proactive monitoring and responsive support keep California businesses satisfied year after year.',
+    static: false,
+  },
+  {
+    label: '98% Retention:',
+    body: 'Clients stay because results matter. Service providers who deliver earn loyalty. This works.',
+    static: false,
+  },
+  {
+    label: '20+ Years:',
+    body: 'Serving small and mid sized business across SoCal. We know this market, these industries, and their challenges. Managed service provider experience you can verify.',
+    static: false,
+  },
+] as const;
+---
+
+<div class="section margin-top-small">
+  <div class="container">
+    <div class="section-content">
+      <div class="grid">
+        <div class="content">
+          <div class="title">
+            <h2 class="h3">Proof, Not Promises</h2>
+          </div>
+          <div class="accordion">
+            {items.map(item => (
+              <div class={`accordion-item${item.static ? ' no-anime' : ''}`}>
+                <div class="acc-title">
+                  <div class="accordion-icon-title">
+                    <Icon name="check-circle" class="widget__embed-icons green-icon" />
+                    <div class="accordion-title no_padding">{item.label}</div>
+                  </div>
+                </div>
+                <div class="accordion-content-wrap">
+                  <div class="accordion-content">
+                    <p class="accordion-text">{item.body}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="square-image-wrap sticky">
+          <Image
+            class="square-parallax-image"
+            src={photoItPro}
+            alt="IT professional offering expert IT support to businesses in Southern California"
+            widths={[300, 500]}
+            sizes="(max-width: 991px) 90vw, 500px"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .acc-title {
+    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    font-weight: 500;
+    display: flex;
+  }
+
+  .accordion-icon-title {
+    gap: 0.6rem;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+  }
+
+  .accordion-title.no_padding {
+    color: var(--color-brand-dark);
+    padding: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 767px) {
+    .accordion-title.no_padding { font-size: 1.1rem; }
+  }
+</style>

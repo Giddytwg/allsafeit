@@ -1,0 +1,125 @@
+---
+import Base from '../../layouts/Base.astro';
+import HeroService from '../../components/sections/HeroService.astro';
+import SectionIntro from '../../components/sections/SectionIntro.astro';
+import SplitContent from '../../components/sections/SplitContent.astro';
+import ServiceCardList from '../../components/sections/ServiceCardList.astro';
+import TestimonialsSlider from '../../components/sections/TestimonialsSlider.astro';
+import TrustChecklist from '../../components/sections/TrustChecklist.astro';
+import LocationCards from '../../components/sections/LocationCards.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import ContactSection from '../../components/sections/ContactSection.astro';
+import { MANAGED_IT_FAQS } from '../../data/faqs/managed-it';
+import type { ServiceItem } from '../../components/sections/ServiceCardList.astro';
+
+const coreServices: ServiceItem[] = [
+  {
+    title: '24/7/365 Helpdesk Support',
+    description: 'Unlimited IT support from real experts, around the clock. Password resets, software issues, hardware problems, complex troubleshooting — resolved remotely within minutes.',
+  },
+  {
+    title: 'Advanced Endpoint Management',
+    description: 'Every device on your network monitored, patched, and secured. We deploy updates automatically and respond to threats before they impact operations.',
+  },
+  {
+    title: 'Co-Managed IT Services',
+    description: 'Supplement your existing IT team with specialized expertise, additional coverage, and strategic guidance. The best of both worlds for growing businesses.',
+  },
+  {
+    title: 'Data Recovery Services',
+    description: 'Automated backups with tested disaster recovery. When the unexpected happens, your data is protected and your business gets back online fast.',
+  },
+  {
+    title: 'Proactive IT Maintenance',
+    description: 'Continuous monitoring catches problems before they become outages. We find and fix issues you never knew existed, keeping operations smooth.',
+  },
+  {
+    title: 'Strategic vCIO Guidance',
+    description: 'Technology leadership aligned to your business goals. Quarterly reviews, vendor management, budget planning, and roadmaps for sustainable growth.',
+  },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Managed IT Services',
+  url: 'https://www.allsafeit.com/services/managed-it',
+  serviceType: 'Managed Services',
+  description: 'AllSafe IT delivers proactive Managed IT Services that eliminate downtime and streamline operations for growing businesses.',
+  provider: { '@type': 'Organization', '@id': 'https://www.allsafeit.com#organization' },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.allsafeit.com' },
+    { '@type': 'ListItem', position: 2, name: 'Managed IT Services', item: 'https://www.allsafeit.com/services/managed-it' },
+  ],
+};
+---
+
+<Base
+  title="Managed IT Services For Small Businesses | AllSafe IT"
+  description="Get reliable Managed IT Services for SMBs. AllSafe IT delivers 24/7 helpdesk, cybersecurity, and proactive IT support for small businesses. Free quote."
+  canonical="https://www.allsafeit.com/services/managed-it"
+  schema={[serviceSchema, breadcrumbSchema]}
+>
+  <HeroService
+    heading="Managed IT Services for Small Businesses"
+    lead="Proactive managed IT services for small businesses that prevent downtime, secure your systems, and keep your team productive with 24/7 expert support and strategic technology services."
+    image="/images/Retail.avif"
+    imageAlt="Managed IT services team supporting small business technology"
+  />
+
+  <SectionIntro heading="IT that works for you, not against you">
+    <p class="lead-text">You're tired of talking about tech support. We hear that.</p>
+    <p class="lead-text">Every minute spent troubleshooting slow systems is a minute stolen from your business. You need information technology that supports your vision — not technology that becomes the problem. That's where managed services make the difference.</p>
+    <p class="lead-text">Instead of reacting to IT issues after they derail your day, we prevent them. Your systems stay secure. Your team stays productive. Your business keeps moving forward. We want you to win.</p>
+  </SectionIntro>
+
+  <SplitContent
+    heading="What Managed IT Services deliver for Small Businesses"
+    image="/images/ladyfromourteam.avif"
+    imageAlt="IT support team member helping small business"
+    bg="gradient"
+  >
+    <p class="body-text">Traditional break-fix IT works like calling a plumber when pipes burst. You have a problem, you call, you wait, you pay unpredictable costs for each incident.</p>
+    <p class="body-text">Managed IT services flip that model completely. We monitor your network around the clock. We patch vulnerabilities before cyber threats find them. We optimize IT operations before users complain.</p>
+    <p class="body-text">Think of it as having an entire IT department on retainer — except you get a full team of IT experts for less than the cost of one in-house hire. Break-fix is reactive. Managed services are proactive. One waits for fires. The other prevents them.</p>
+  </SplitContent>
+
+  <SplitContent
+    heading="IT Support for Small Businesses that scales"
+    image="/images/managedIThollywood.avif"
+    imageAlt="Managed IT services helping small businesses maintain secure systems"
+    imageRight
+  >
+    <p class="body-text">Small businesses need IT support that grows with them. Our managed IT support services provide exactly that.</p>
+    <p class="body-text">We handle everything from daily tech support to strategic consulting. Your internal resources stay focused on core operations while our IT team manages infrastructure, security, and operations.</p>
+    <p class="body-text">Whether you need fully managed IT services or want to supplement your in-house team, we provide scalable solutions that fit your business needs — without rigid contracts or unnecessary services.</p>
+  </SplitContent>
+
+  <ServiceCardList
+    heading="Core Managed IT Services for Small Businesses"
+    lead="Your business needs more than generic tech support. These services work together to create complete IT operations designed around your needs."
+    items={coreServices}
+  />
+
+  <SplitContent
+    heading="What makes our Managed IT Services different"
+    image="/images/office.avif"
+    imageAlt="AllSafe IT office — managed IT services provider"
+    bg="gradient"
+  >
+    <p class="body-text">Most managed IT companies fix problems after they happen. We prevent them through proactive monitoring and management.</p>
+    <p class="body-text">We maintain a 94.9% customer satisfaction score and 99.999% uptime across client infrastructure. These aren't aspirations — they're metrics we track monthly. Our IT team holds Microsoft certifications across Azure, M365, and modern workplace solutions.</p>
+    <p class="body-text">You get transparent pricing with no surprise bills. Flat monthly fees cover everything in your agreement. No hidden charges for routine tech support or software updates.</p>
+  </SplitContent>
+
+  <TrustChecklist />
+  <TestimonialsSlider />
+  <LocationCards />
+  <FaqSection faqs={MANAGED_IT_FAQS} heading="Frequently Asked Questions" />
+  <ContactSection />
+</Base>

@@ -1,0 +1,138 @@
+---
+import Base from '../../layouts/Base.astro';
+import LocationCards from '../../components/sections/LocationCards.astro';
+import ContactSection from '../../components/sections/ContactSection.astro';
+import Icon from '../../components/primitives/Icon.astro';
+import { BLOGS } from '../../data/blogs';
+---
+
+<Base
+  title="IT & Cybersecurity Blog | AllSafe IT"
+  description="Insights on managed IT services, cybersecurity, AI automation, and technology strategy for California businesses. AllSafe IT blog."
+  canonical="https://www.allsafeit.com/blog"
+>
+  <div class="blog-hero-wrap">
+    <div aria-hidden="true" style="height: var(--navbar-height)"></div>
+    <section class="section blog-hero">
+      <div class="container">
+        <div class="blog-hero-inner">
+          <p class="badge-text blog-badge">[AllSafe IT Blog]</p>
+          <h1 class="h2">Insights on Managed IT &amp; Cybersecurity</h1>
+          <p class="lead-text">Practical technology guidance for California businesses. No jargon, no vendor pitches — just honest insights on IT, security, and AI.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="blogs-grid">
+        {BLOGS.map(post => (
+          <div class="blog-card">
+            <div class="card">
+              <div>
+                <img
+                  src={post.imgSrc}
+                  alt={post.imgAlt}
+                  class="card-image"
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                />
+                <div class="card-line" aria-hidden="true"></div>
+              </div>
+              <div class="card-body">
+                <h2 class="lead-text strong">{post.heading}</h2>
+                <p class="lead-text body-text">{post.desc}</p>
+                <div class="button-flex">
+                  <a href={post.href} class="badge-text-blue hover-text-link-label">Read more</a>
+                  <Icon name="arrow-right" class="small_icon color__lightblue" />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <LocationCards />
+  <ContactSection />
+</Base>
+
+<style>
+  .blog-hero-wrap {
+    margin-top: var(--navbar-negative-height);
+    background-color: var(--color-light-2);
+  }
+
+  .blog-hero {
+    padding-bottom: var(--spacing-section-sm);
+  }
+
+  .blog-hero-inner {
+    max-width: var(--container-8col);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .blog-badge {
+    color: var(--color-accent);
+  }
+
+  .blogs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
+
+  .blog-card { display: flex; flex-direction: column; }
+
+  .lead-text.strong { font-weight: 600; }
+
+  .hover-text-link-label {
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .hover-text-link-label:hover { color: var(--color-brand-dark); }
+
+  .card {
+    gap: 12px;
+    border-radius: var(--radius-default);
+    background-color: var(--color-light-2);
+    flex-direction: column;
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .card-line {
+    background-color: var(--color-brand-primary);
+    background-image: linear-gradient(94deg, var(--color-accent), #fff);
+    width: 100%;
+    height: 6px;
+  }
+
+  .card-image {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+  }
+
+  .card-body {
+    gap: 1.5rem;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem;
+    display: flex;
+  }
+
+  @media (max-width: 991px) { .blogs-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 767px) { .blogs-grid { grid-template-columns: 1fr; } }
+</style>

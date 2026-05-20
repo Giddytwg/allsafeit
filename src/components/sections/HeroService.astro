@@ -1,0 +1,177 @@
+---
+interface Props {
+  heading: string;
+  lead: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const { heading, lead, image, imageAlt = '' } = Astro.props;
+---
+
+<div class="hero-service-wrap">
+  <div aria-hidden="true" style="height: var(--navbar-height)"></div>
+  <section class="section bg-brand-2 hero-service-inner">
+    <div class="container">
+      <div class={image ? 'hero-grid' : 'hero-single'}>
+        {image && (
+          <div class="h-left">
+            <img
+              src={image}
+              alt={imageAlt}
+              class="square-parallax-image"
+              width="600"
+              height="600"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+        )}
+        <div class="h-right">
+          <h1 class="h2 color__white-shade1">{heading}</h1>
+          <p class="lead-text color__white-shade1">{lead}</p>
+          <a href="#form" class="button small hero-cta">
+            <div class="button-text-wrapper">
+              <span class="button-text">Talk to an expert</span>
+            </div>
+          </a>
+          <div class="partner-addendum">
+            <p class="badge-text partner-label color__white-shade1">Some of our multi-national partners</p>
+            <div class="partner-marquee">
+              <div class="partner-marquee-group">
+                <div class="partner-logos">
+                  <div class="plogo"><img src="/images/Sophos_logo_colored.avif" alt="Sophos" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/Veeam-Logo.png" alt="Veeam" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/Open-AI-White-Logo-PNG.avif" alt="OpenAI" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/microsoft-logo-png-13.avif" alt="Microsoft" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/ring-central-colored-logo.avif" alt="RingCentral" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/Apple_logo_with_text_white.avif" alt="Apple" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/Datto_logo_colored.avif" alt="Datto" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/anthropic-text.avif" alt="Anthropic" width="80" loading="lazy" /></div>
+                </div>
+              </div>
+              <div class="partner-marquee-group" aria-hidden="true">
+                <div class="partner-logos">
+                  <div class="plogo"><img src="/images/Sophos_logo_colored.avif" alt="" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/Veeam-Logo.png" alt="" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/Open-AI-White-Logo-PNG.avif" alt="" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/microsoft-logo-png-13.avif" alt="" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/ring-central-colored-logo.avif" alt="" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/Apple_logo_with_text_white.avif" alt="" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/Datto_logo_colored.avif" alt="" width="80" loading="lazy" /></div>
+                  <div class="plogo"><img src="/images/anthropic-text.avif" alt="" width="80" loading="lazy" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line-wrapper"></div>
+  </section>
+</div>
+
+<style>
+  .hero-service-wrap {
+    margin-top: var(--navbar-negative-height);
+    background-color: var(--color-brand-dark);
+  }
+
+  .hero-service-inner {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-single {
+    max-width: var(--container-6col);
+  }
+
+  .h-left {
+    border-radius: var(--radius-default);
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+
+  .square-parallax-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .h-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-cta {
+    align-self: flex-start;
+  }
+
+  .partner-addendum {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .partner-label {
+    opacity: 0.7;
+  }
+
+  .partner-marquee {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .partner-marquee-group {
+    flex: none;
+    animation: partner-scroll 30s linear infinite;
+  }
+
+  .partner-logos {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding-right: 72px;
+  }
+
+  .plogo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+
+  .plogo img {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  @keyframes partner-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+  }
+
+  @media (max-width: 991px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .h-left { order: -1; max-height: 300px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .partner-marquee-group { animation: none; }
+  }
+</style>

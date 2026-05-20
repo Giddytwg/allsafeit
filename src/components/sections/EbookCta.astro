@@ -1,0 +1,80 @@
+---
+---
+
+<section class="section margin-top-small">
+  <section class="quote-below-title">
+    <div class="container">
+      <div class="large-quote-box book">
+        <div class="large-quote-box-text">
+          <div class="section-content">
+            <div class="content">
+              <h3 class="h4 color__white-shade1">Everything to know about AllSafe IT support in California</h3>
+              <p class="lead-text color__white-shade1">This e-book contains everything you need to know about our local IT support across Southern California. Get your free copy now and gain a sneak peek into our world of IT bliss.</p>
+            </div>
+            <form
+              id="email-book-download-form"
+              name="email-form"
+              method="get"
+              action="/lead-magnet-download"
+              class="form book"
+            >
+              <input
+                class="form-input whiteversion"
+                maxlength="256"
+                name="Email"
+                placeholder="Email Address"
+                type="email"
+                id="Ebook-Email"
+                required
+              />
+              <input class="hidden-form-input" maxlength="256" name="source_url" type="text" id="ebook-source_url" tabindex="-1" aria-hidden="true" />
+              <input type="submit" class="button form-button" value="Download Ebook" />
+            </form>
+            <div class="form-success" role="alert" hidden>
+              <div>Thank you! Your submission has been received!</div>
+            </div>
+            <div class="form-error" role="alert" hidden>
+              <div>Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+        </div>
+        <div class="quote-author">
+          <img src="/images/book.avif" loading="lazy" alt="E-book PDF about local IT support California" width="200" height="260" />
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<style>
+  .form.book {
+    flex-direction: row;
+    width: auto;
+    gap: 12px;
+  }
+
+  .form-input.whiteversion {
+    border-color: var(--color-light-1);
+    color: var(--color-light-2);
+  }
+
+  .form-input.whiteversion::placeholder {
+    color: var(--color-light-1);
+  }
+
+  .quote-author {
+    gap: 24px;
+    border-left: 1px dotted var(--color-dark-faded);
+    justify-content: center;
+    align-items: center;
+    padding-left: 48px;
+    padding-right: 48px;
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 767px) {
+    .form.book    { flex-direction: column; }
+    .quote-author { border-left: none; padding-left: 0; padding-right: 0; }
+  }
+</style>
